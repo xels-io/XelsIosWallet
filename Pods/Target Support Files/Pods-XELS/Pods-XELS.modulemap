@@ -1,0 +1,6 @@
+framework module Pods_XELS {
+  umbrella header "Pods-XELS-umbrella.h"
+
+  export *
+  module * { export * }
+}
