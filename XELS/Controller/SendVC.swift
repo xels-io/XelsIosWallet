@@ -37,7 +37,6 @@ class SendVC: UIViewController, UITextFieldDelegate, AVCaptureMetadataOutputObje
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupCaptureSession()
         setup()
         setupMenu()
         setupTetField()
@@ -179,14 +178,35 @@ class SendVC: UIViewController, UITextFieldDelegate, AVCaptureMetadataOutputObje
         let appDeledate = UIApplication.shared.delegate as! AppDelegate
         let revealViewController = appDeledate.revealViewController
         let dashboardVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "dashboardNav")
-        let menuVC = revealViewController?.rightViewController as! MenuVC
-        menuVC.menuTableView.reloadData()
+        if let revealVC = revealViewController, let menuVC = revealVC.rightViewController as? MenuVC, let tableView = menuVC.menuTableView as? UITableView {
+            tableView.reloadData()
+        }
         revealViewController!.pushFrontViewController(dashboardVC, animated: true)
     }
     
     @IBAction func scanQrCodeButtonTapped(_ sender: Any) {
-        self.setupPreviewLayer()
-        captureSession.startRunning()
+        if AVCaptureDevice.authorizationStatus(for: .video) ==  .authorized {
+            //already authorized
+            print("Authorized")
+            self.setupCaptureSession()
+            self.setupPreviewLayer()
+            self.captureSession.startRunning()
+        } else {
+            AVCaptureDevice.requestAccess(for: .video, completionHandler: { (granted: Bool) in
+                if granted {
+                    print("Granted")
+                    DispatchQueue.main.async {
+                        self.setupCaptureSession()
+                        self.setupPreviewLayer()
+                        self.captureSession.startRunning()
+                    }
+                } else {
+                    print("Denied")
+                    self.requestForCamera()
+                }
+            })
+        }
+
     }
     
     //MARK: - API CALL
@@ -198,40 +218,40 @@ class SendVC: UIViewController, UITextFieldDelegate, AVCaptureMetadataOutputObje
         }
         
         let param = [Parameter.url: "/api/wallet/balance", Parameter.walletName: walletName, Parameter.accountName: accountName] as [String: Any]
-        HUD.show(.progress)
+        //HUD.show(.progress)
         APIClient.getBalance(param: param) { (result, statusCode, data) in
             switch result {
             case .success(let balanceResponse):
                 guard let statusCode = balanceResponse.statusCode else {
-                    HUD.flash(.label("Something went wrong!"), delay: 0.2)
+                    //HUD.flash(.label("Something went wrong!"), delay: 0.2)
                     return
                 }
                 if statusCode == 200 {
                     guard let responseData = balanceResponse.responseData, let balances = responseData.balances, let balance = balances.first else{
-                        HUD.flash(.label("Sorry, balance not found"), delay: 0.2)
+                        //HUD.flash(.label("Sorry, balance not found"), delay: 0.2)
                         return
                     }
-                    HUD.flash(.success, delay: 0.1, completion:{ (_) in
+                    //HUD.flash(.success, delay: 0.1, completion:{ (_) in
                         if let confirmedBalance = balance.amountConfirmed, let unConfirmedBalance = balance.amountUnconfirmed {
                             let value = self.satosiToXels(value: confirmedBalance+unConfirmedBalance)
                             self.setBalanceTextWith(balance: value.description)
                         }
                         return
-                    })
+                    //})
                 } else {
                     if let errors = balanceResponse.errors, let error = errors.first {
                         guard let message = error.message else {
-                            HUD.flash(.label("Something went wrong!"), delay: 0.2)
+                            //HUD.flash(.label("Something went wrong!"), delay: 0.2)
                             return
                         }
-                        HUD.flash(.label(message), delay: 0.2)
+                        //HUD.flash(.label(message), delay: 0.2)
                         return
                     }
-                    HUD.flash(.label("Something went wrong!"), delay: 0.2)
+                    //HUD.flash(.label("Something went wrong!"), delay: 0.2)
                 }
                 break
             case .failure:
-                HUD.flash(.label("Something went wrong!"), delay: 0.2)
+                //HUD.flash(.label("Something went wrong!"), delay: 0.2)
                 break
             }
         }
@@ -322,7 +342,7 @@ class SendVC: UIViewController, UITextFieldDelegate, AVCaptureMetadataOutputObje
                 }
                 if statusCode == 200 {
                     if let data = buildResponse.responseData, let _ = data.transactionId, let hex = data.hex {
-                        HUD.flash(.success)
+                        //HUD.flash(.success)
                         self.send(hex: hex)
                         //self.resetUI()
                         return
@@ -348,7 +368,7 @@ class SendVC: UIViewController, UITextFieldDelegate, AVCaptureMetadataOutputObje
     }
     
     func send(hex: String) {
-        HUD.show(.progress)
+        //HUD.show(.progress)
         let param = [
             Parameter.url: "/api/wallet/send-transaction",
             Parameter.hex: hex
@@ -364,6 +384,8 @@ class SendVC: UIViewController, UITextFieldDelegate, AVCaptureMetadataOutputObje
                 if statusCode == 200 {
                     if let data = sendResponse.responseData, let _ = data.transactionId {
                         self.resetUI()
+                        HUD.flash(.success)
+                        return
                     }
                     HUD.flash(.error)
                 } else {
@@ -500,6 +522,22 @@ class SendVC: UIViewController, UITextFieldDelegate, AVCaptureMetadataOutputObje
         self.view.endEditing(true)
     }
     
+    func requestForCamera(){
+        let alertController = UIAlertController(title: "Xels Wallet Would Like to Access the Camera", message: "Xels Wallet needs  your camera to scan QR Code.", preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+        let goToSettingsAction = UIAlertAction(title: "Go to Settings", style: .default) { (action) in
+            guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
+                return
+            }
+            
+            if UIApplication.shared.canOpenURL(settingsUrl) {
+                UIApplication.shared.openURL(settingsUrl)
+            }
+        }
+        alertController.addAction(cancelAction)
+        alertController.addAction(goToSettingsAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
     
     //MARK: - UITEXTFIELD DELEGATE
     func textFieldDidBeginEditing(_ textField: UITextField) {

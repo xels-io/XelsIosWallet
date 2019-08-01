@@ -16,8 +16,10 @@ class RestoreVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
 //    @IBOutlet weak var secretWordTF: UITextField!
     @IBOutlet weak var secretWordTV: UITextView!
     @IBOutlet weak var passwordTF: UITextField!
+    @IBOutlet weak var passPhraseTF: UITextField!
     @IBOutlet weak var restoreButton: UIButton!
     
+    let secretTextPlaceholder = "Enter space separated secret words"
     let datePicker = UIDatePicker()
     
     override func viewDidLoad() {
@@ -26,7 +28,7 @@ class RestoreVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
         self.setupUI()
         self.hideKeyboardOnTappedAround()
         self.setupDatepicker()
-        self.secretWordTV.placeholder = "Enter space separated secert words"
+        setSecretTVPlaceholder()
     }
     
     //MARK: - SETUP
@@ -46,17 +48,20 @@ class RestoreVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
         creationDateTF.doCornerAndBorder(radius: 8.0, border: 1.0, color: UIColor.templateGreen.cgColor)
         secretWordTV.doCornerAndBorder(radius: 8.0, border: 1.0, color: UIColor.templateGreen.cgColor)
         passwordTF.doCornerAndBorder(radius: 8.0, border: 1.0, color: UIColor.templateGreen.cgColor)
+        passPhraseTF.doCornerAndBorder(radius: 8.0, border: 1.0, color: UIColor.templateGreen.cgColor)
         
         walletNameTF.delegate = self
         creationDateTF.delegate = self
 //        secretWordTF.delegate = self
         secretWordTV.delegate = self
         passwordTF.delegate = self
+        passPhraseTF.delegate = self
     }
     
     func setupDatepicker(){
         datePicker.datePickerMode = .date
         datePicker.addTarget(self, action: #selector(datepickerValueChanged(sender:)), for: .valueChanged)
+        datePicker.maximumDate = Date()
         self.creationDateTF.inputView = datePicker
         
         let toolbar = UIToolbar()
@@ -99,7 +104,21 @@ class RestoreVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
-        textView.removeWarning(isSecure: false)
+        if textView.text == "Please enter space separated secret words" || textView.text == secretTextPlaceholder{
+            textView.removeWarning(isSecure: false)
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text == "" {
+            setSecretTVPlaceholder()
+        }
+    }
+    
+    
+    func setSecretTVPlaceholder() {
+        self.secretWordTV.textColor = UIColor.lightGray
+        self.secretWordTV.text = secretTextPlaceholder
     }
     
     //MARK: - CUSTOM METHODS
@@ -127,6 +146,9 @@ class RestoreVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
     
     func isValid(textView: UITextView) -> Bool {
         if let text = textView.text, !text.trimmingCharacters(in: .whitespaces).isEmpty {
+            if text == secretTextPlaceholder {
+                return false
+            }
             return true
         }
         return false
@@ -144,11 +166,21 @@ class RestoreVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
         } else if !isValid(textView: secretWordTV) {
             secretWordTV.resignFirstResponder()
             secretWordTV.showWarning(message: "Please enter space separated secret words")
+            return false
         } else if !isValid(textField: passwordTF) {
             passwordTF.resignFirstResponder()
             passwordTF.showWarning(message: "Please enter valid password")
             return false
+        } else if !isValid(passwordTF.text!, regEx: Constant.passWordRegEx) {
+            passwordTF.resignFirstResponder()
+            passwordTF.showWarning(message: "Please enter valid password")
+            return false
+        } else if !isValid(textField: passPhraseTF) {
+            passPhraseTF.resignFirstResponder()
+            passPhraseTF.showWarning(message: "Please enter a passphrase")
+            return false
         }
+        
         return true
     }
     
@@ -159,23 +191,24 @@ class RestoreVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
     //MARK: - BUTTON ACTION
     @IBAction func restoreButtonTapped(_ sender: Any) {
         if isRestoreParametersValid() {
-            guard let walletName = walletNameTF.text, let date = creationDateTF.text, let secretWords = secretWordTV.text, let password = passwordTF.text else {
+            guard let walletName = walletNameTF.text, let date = creationDateTF.text, let secretWords = secretWordTV.text, let password = passwordTF.text, let passPhrase = passPhraseTF.text else {
                 return
             }
-            restoreWith(walletName: walletName, date: date, secureWords: secretWords, password: password)
+            restoreWith(walletName: walletName, date: date, secureWords: secretWords, password: password, passPhrase: passPhrase)
         }
     }
     
     
     //MARK: - API CALL
-    func restoreWith(walletName: String, date: String, secureWords: String, password: String) {
+    func restoreWith(walletName: String, date: String, secureWords: String, password: String, passPhrase: String) {
         
         let param = [Parameter.url: "/api/wallet/recover/",
                      Parameter.creationDate: date,
                      Parameter.folderPath: "null",
                      Parameter.mnemonic: secureWords,
                      Parameter.name: walletName,
-                     Parameter.password: password] as [String: Any]
+                     Parameter.password: password,
+                     Parameter.passphrase: passPhrase] as [String: Any]
         
         
         HUD.show(.progress)

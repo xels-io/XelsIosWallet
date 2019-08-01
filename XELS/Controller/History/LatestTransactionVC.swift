@@ -53,6 +53,17 @@ class LatestTransactionVC: UIViewController, UITableViewDataSource, UITableViewD
         transactionTableView.register(UINib(nibName: "TransactionTVCell", bundle: nil), forCellReuseIdentifier: "transactionTVCell")
         transactionTableView.delegate = self
         transactionTableView.dataSource = self
+        
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refresh(_:)), for: .valueChanged)
+        if #available(iOS 10.0, *) {
+            transactionTableView.refreshControl = refreshControl
+        }
+    }
+    
+    @objc func refresh(_ refreshControl: UIRefreshControl) {
+        refreshControl.endRefreshing()
+        self.getTransactions()
     }
     
     //MARK: - API CALL
@@ -118,10 +129,56 @@ class LatestTransactionVC: UIViewController, UITableViewDataSource, UITableViewD
         let transactionData = transactions[indexPath.row]
         
         if let type = transactionData.type {
-            if type == "staked"{
+            if type == "send" {
+                cell.statusLabel.text = "To"
+                cell.statusIV?.image = UIImage(named: "send_selected")
+                if let payments = transactionData.payments {
+                    if payments.count > 0 {
+                        if let address = payments[0].destinationAddress {
+                            cell.addressLabel.text = address
+                        }
+                    }
+                }
+                if let _confirmedBlock = transactionData.confirmedInBlock {
+                    if _confirmedBlock > 0 {
+                        cell.statusIV.image = UIImage(named: "send_selected")
+                    } else {
+                        cell.statusIV.image = UIImage(named: "send_icon_yellow")
+                    }
+                } else {
+                    cell.statusIV.image = UIImage(named: "send_icon_yellow")
+                }
+            }else if type == "received"{
+                cell.statusLabel.text = "From"
+                cell.statusIV?.image = UIImage(named: "receive_selected")
+                if let address = transactionData.toAddress {
+                    cell.addressLabel.text = address
+                }
+                if let _confirmedBlock = transactionData.confirmedInBlock {
+                    if _confirmedBlock > 0 {
+                        cell.statusIV.image = UIImage(named: "receive_selected")
+                    } else {
+                        cell.statusIV.image = UIImage(named: "receive_icon_yellow")
+                    }
+                } else {
+                    cell.statusIV.image = UIImage(named: "receive_icon_yellow")
+                }
+                    
+            } else if type == "staked" {
+                cell.statusLabel.text = "Reward"
                 cell.statusIV?.image = UIImage(named: "stake_icon")
-            } else {
-                cell.statusIV.image = UIImage(named: "receive_selected")
+                if let address = transactionData.toAddress {
+                    cell.addressLabel.text = address
+                }
+                if let _confirmedBlock = transactionData.confirmedInBlock {
+                    if _confirmedBlock > 0 {
+                        cell.statusIV.image = UIImage(named: "stake_icon")
+                    } else {
+                        cell.statusIV.image = UIImage(named: "stake_icon_yellow")
+                    }
+                } else {
+                    cell.statusIV.image = UIImage(named: "stake_icon_yellow")
+                }
             }
         }
         if let amount = transactionData.amount {
@@ -130,13 +187,16 @@ class LatestTransactionVC: UIViewController, UITableViewDataSource, UITableViewD
         if let date = transactionData.timestamp {
             cell.dateLabel.text = getDateFor(unixtimeInterval: Double(date) ?? 0)
         }
-        if let address = transactionData.toAddress {
-            cell.addressLabel.text = address
-        }
-        
         return cell
     }
     
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //tableView.deselectRow(at: indexPath, animated: false)
+        let alertView = AlertView()
+        let transactionData = transactions[indexPath.row]
+        alertView.showFullSceneAlert(transaction: transactionData,loggedInUser: loggedInUser)
+    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 115.0

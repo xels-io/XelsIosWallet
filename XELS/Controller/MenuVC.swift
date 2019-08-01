@@ -14,7 +14,7 @@ class MenuVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var userNameLabel: UILabel!
     
     let menus = [MenuItem(title: "Dashboard", selectedImage: "dashboard_selected", unselectedImage: "dashboard_unselected"),
-                 MenuItem(title: "Latest Transaction", selectedImage: "coin_selected", unselectedImage: "coin_unselected"),
+                 MenuItem(title: "History", selectedImage: "coin_selected", unselectedImage: "coin_unselected"),
                  MenuItem(title: "Receive", selectedImage: "receive_selected", unselectedImage: "receive_unselected"),
                  MenuItem(title: "Send", selectedImage: "send_selected", unselectedImage: "send_unselected"),
                  MenuItem(title: "", selectedImage: "", unselectedImage: ""),

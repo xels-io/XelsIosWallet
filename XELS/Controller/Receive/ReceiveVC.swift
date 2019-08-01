@@ -16,6 +16,7 @@ class ReceiveVC: UIViewController {
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var copyToClipboardContentView: UIView!
     @IBOutlet weak var copyToclipboardIV: UIImageView!
+    @IBOutlet weak var copyToClipBoardButton: UIButton!
     @IBOutlet weak var showAllAddressesButton: UIButton!
     @IBOutlet weak var okButton: UIButton!
     @IBOutlet weak var menuButton: UIBarButtonItem!
@@ -46,6 +47,7 @@ class ReceiveVC: UIViewController {
         okButton.doCornerAndBorder(radius: 8.0, border: 3.0, color: UIColor.templateGreen.cgColor)
         addressContainerView.doCornerAndBorder(radius: 8.0, border: 1.5, color: UIColor.templateGreen.cgColor)
         copyToClipboardContentView.doCornerAndBorder(radius: 8.0, border: 1.0, color: UIColor.templateGreen.cgColor)
+        copyToClipBoardButton.doCornerAndBorder(radius: 8.0, border: 1.0, color: UIColor.templateGreen.cgColor)
     }
     
     func setupMenu() {
@@ -60,15 +62,16 @@ class ReceiveVC: UIViewController {
     @IBAction func copyToClipboardTapped(_ sender: Any) {
         let pasteboard = UIPasteboard.general
         pasteboard.string = addressLabel.text
-        HUD.flash(.label("Copied"), delay: 0.2)
+        HUD.flash(.label("Copied"), delay: 0.3)
     }
     
     @IBAction func okButtonTapped(_ sender: Any) {
         let appDeledate = UIApplication.shared.delegate as! AppDelegate
         let revealViewController = appDeledate.revealViewController
         let dashboardVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "dashboardNav")
-        let menuVC = revealViewController?.rightViewController as! MenuVC
-        menuVC.menuTableView.reloadData()
+        if let revealVC = revealViewController, let menuVC = revealVC.rightViewController as? MenuVC, let tableView = menuVC.menuTableView as? UITableView {
+            tableView.reloadData()
+        }
         revealViewController!.pushFrontViewController(dashboardVC, animated: true)
     }
     

@@ -21,8 +21,24 @@ struct BaseURL {
 //    static let getURL = "http://54.238.248.117:4000/GetAPIResponse"
 //    static let postURL = "http://54.238.248.117:4000/PostAPIResponse"
     
-    static let getURL = "http://52.68.239.4:4000/GetAPIResponse"
-    static let postURL = "http://52.68.239.4:4000/PostAPIResponse"
+//    static let getURL = "http://52.68.239.4:4000/GetAPIResponse"
+//    static let postURL = "http://52.68.239.4:4000/PostAPIResponse"
+    
+//    static let getURL = "https://api.xels.io:2332/GetAPIResponse"
+//    static let postURL = "https://api.xels.io:2332/PostAPIResponse"
+
+    static let baseUrl = "https://api.xels.io:2332"
+    static let getURL = "\(BaseURL.getBaseUrl())/GetAPIResponse"
+    static let postURL = "\(BaseURL.getBaseUrl())/PostAPIResponse"
+    
+    static func getBaseUrl() -> String {
+        let settingsManager = SettingsManager.sharedInstance()
+        if let baseUrlString = settingsManager.baseUrl {
+            return baseUrlString
+        } else {
+            return ""
+        }
+    }
 }
 
 struct Parameter {
@@ -54,5 +70,12 @@ struct Constant{
     static let mainGetURL = "http://13.115.56.41:4000/GetAPIResponse" // used in dashboardVC and sendVC
     static let mainPostURL = "http://13.115.56.41:4000/PostAPIResponse"
     static let satosi:Double = 100000000;
+    
+    static let used: String = "Used"
+    static let unused: String = "Unused"
+    static let changed: String = "Changed"
+    
+    static let passWordRegEx: String = #"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"#
+    static let emaiRegEx: String = "[A-Z0-9a-z.-_]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,3}"
 }
 

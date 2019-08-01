@@ -19,13 +19,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        IQKeyboardManager.shared.enable = false
+        IQKeyboardManager.shared.enable = true
         
         self.window = UIWindow(frame: UIScreen.main.bounds)
         let sessionManager = SessionManager.sharedInstance()
         sessionManager.setAppropriateVC()
         
         return true
+    }
+    
+    
+    func showMainWindow(){
+        self.window?.makeKeyAndVisible()
     }
     
 

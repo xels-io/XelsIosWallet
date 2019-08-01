@@ -34,6 +34,7 @@ extension UITextView {
     func showWarning(message: String){
         self.backgroundColor = UIColor.warningBackground
         self.textColor = UIColor.templateWarning
+//        self.placeholder = message
         self.text = message
     }
     
@@ -43,6 +44,7 @@ extension UITextView {
         self.backgroundColor = UIColor.white
         self.textColor = UIColor.black
         self.text = ""
+//        self.placeholder = ""
     }
     
 }
@@ -90,6 +92,13 @@ extension UIView {
         self.layer.shadowRadius = 2.0
         self.layer.masksToBounds = false
         self.layer.cornerRadius = 4.0
+    }
+    
+    func loadNib() -> UIView {
+        let bundle = Bundle(for: type(of: self))
+        let nibName = type(of: self).description().components(separatedBy: ".").last!
+        let nib = UINib(nibName: nibName, bundle: bundle)
+        return nib.instantiate(withOwner: self, options: nil).first as! UIView
     }
 }
 
@@ -169,4 +178,12 @@ extension UITextView: UITextViewDelegate {
         self.delegate = self
     }
     
+}
+
+
+extension UIViewController {
+    func isValid(_ value: String, regEx: String) -> Bool {
+        let emailTest = NSPredicate(format:"SELF MATCHES[c] %@", regEx)
+        return emailTest.evaluate(with: value)
+    }
 }

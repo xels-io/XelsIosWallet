@@ -17,20 +17,25 @@ class CreateAccountVC: UIViewController, UICollectionViewDelegate, UICollectionV
     @IBOutlet weak var confirmPasswordTextField: UITextField!
     @IBOutlet weak var passPhraseTextField: UITextField!
     @IBOutlet weak var warningContainerView: UIView!
+    @IBOutlet weak var word5Label: UILabel!
     @IBOutlet weak var Word5TextField: UITextField!
+    @IBOutlet weak var word8Label: UILabel!
     @IBOutlet weak var word8TextField: UITextField!
+    @IBOutlet weak var word12Label: UILabel!
     @IBOutlet weak var word12TextField: UITextField!
     
     @IBOutlet weak var inputSliderView: UIView!
     @IBOutlet weak var createNewWalletButton: UIButton!
     @IBOutlet weak var wordsCollectionView: UICollectionView!
+    @IBOutlet weak var copyToClipBoardButton: UIButton!
     
     var mnemonic: String!
     var mnemonics = ["One", "Two", "Three", "Four", "Five", "Six", "One", "Two", "Three", "Four", "Five", "Six"]
+    var randomIndex = [Int]()
     
     var name: String!
     var password: String!
-    var passPhrase: String?
+    var passPhrase: String!
     var word5: String!
     var word8: String!
     var word12: String!
@@ -70,6 +75,7 @@ class CreateAccountVC: UIViewController, UICollectionViewDelegate, UICollectionV
         self.nameTextField.delegate = self
         self.passwordTextField.delegate = self
         self.confirmPasswordTextField.delegate = self
+        self.passPhraseTextField.delegate = self
         self.Word5TextField.delegate = self
         self.word8TextField.delegate = self
         self.word12TextField.delegate = self
@@ -77,7 +83,6 @@ class CreateAccountVC: UIViewController, UICollectionViewDelegate, UICollectionV
     
     func setupCollectionView() {
         self.wordsCollectionView.collectionViewLayout = columnLayout
-        self.wordsCollectionView.contentInsetAdjustmentBehavior = .always
         self.wordsCollectionView.delegate = self
         self.wordsCollectionView.dataSource = self
     }
@@ -110,6 +115,8 @@ class CreateAccountVC: UIViewController, UICollectionViewDelegate, UICollectionV
         createNewWalletButton.backgroundColor = UIColor.templateGreen
         createNewWalletButton.doCornerAndBorder(radius: 6.0, border: 2.0, color: UIColor.templateGreen.cgColor)
         createNewWalletButton.setTitleColor(UIColor.white, for: .normal)
+        
+        copyToClipBoardButton.doCornerAndBorder(radius: 8.0, border: 1.0, color: UIColor.templateGreen.cgColor)
     }
     
     //MARK: - BUTTON ACTIONS
@@ -120,6 +127,7 @@ class CreateAccountVC: UIViewController, UICollectionViewDelegate, UICollectionV
             break
             
         case .mnemonic:
+            selectRandomMnemonicIndex()
             slideView()
             currentState = .confirmWords
             break
@@ -130,6 +138,11 @@ class CreateAccountVC: UIViewController, UICollectionViewDelegate, UICollectionV
         }
     }
     
+    @IBAction func copyToClipboardButtonTapped(_ sender: Any) {
+        let pasteboard = UIPasteboard.general
+        pasteboard.string = self.mnemonic
+        HUD.flash(.label("Copied"), delay: 0.3)
+    }
     
     //MARK: - API CALL
     func getMnemonics() {
@@ -173,7 +186,7 @@ class CreateAccountVC: UIViewController, UICollectionViewDelegate, UICollectionV
     
     
     
-    func createAccountWith(mnemonic: String, name: String, password: String, passphrase: String?) {
+    func createAccountWith(mnemonic: String, name: String, password: String, passphrase: String) {
         
         let param = [Parameter.url: "/api/wallet/create/",
                      Parameter.folderPath: "null",
@@ -216,8 +229,23 @@ class CreateAccountVC: UIViewController, UICollectionViewDelegate, UICollectionV
     }
     
     //MARK: - CUSTOM METHODS
+    func selectRandomMnemonicIndex() {
+        randomIndex.removeAll()
+        for _ in 1...3 {
+            let randomValue = Int.random(in: 1 ... 12)
+            randomIndex.append(randomValue)
+        }
+        randomIndex.sort()
+        if randomIndex.count > 2 {
+            self.word5Label.text = "Word number \(randomIndex[0])"
+            self.word8Label.text = "Word number \(randomIndex[1])"
+            self.word12Label.text = "Word number \(randomIndex[2])"
+        }
+    }
+    
+    
     func goToMnemonicPage() {
-        if isValidNameAndPassword() {
+        if isValidCredentials() {
             getMnemonics()
         }
     }
@@ -225,7 +253,10 @@ class CreateAccountVC: UIViewController, UICollectionViewDelegate, UICollectionV
     
     func handleConfirmWords() {
         if isValidMnemonics() {
-            if word5 == mnemonics[4] && word8 == mnemonics[7] && word12 == mnemonics[11] {
+            if randomIndex.count < 3 {
+                return
+            }
+            if word5 == mnemonics[randomIndex[0] - 1] && word8 == mnemonics[randomIndex[1] - 1] && word12 == mnemonics[randomIndex[2] - 1] {
                 createAccountWith(mnemonic: mnemonic, name: name, password: password, passphrase: passPhrase)
             } else {
                 HUD.flash(.label("Sorry! Mnemonic words does not match."), delay: 0.2)
@@ -268,13 +299,13 @@ class CreateAccountVC: UIViewController, UICollectionViewDelegate, UICollectionV
     
     
     
-    func isValidNameAndPassword() -> Bool {
+    func isValidCredentials() -> Bool {
         guard let name = nameTextField.text, !name.trimmingCharacters(in: .whitespaces).isEmpty, nameTextField.textColor != UIColor.templateWarning else {
             nameTextField.resignFirstResponder()
             nameTextField.showWarning(message: "Please enter valid name!")
             return false
         }
-        guard let password = passwordTextField.text, !password.trimmingCharacters(in: .whitespaces).isEmpty, passwordTextField.textColor != UIColor.templateWarning else {
+        guard let password = passwordTextField.text, !password.trimmingCharacters(in: .whitespaces).isEmpty, passwordTextField.textColor != UIColor.templateWarning, isValid(password, regEx: Constant.passWordRegEx) else {
             passwordTextField.resignFirstResponder()
             passwordTextField.showWarning(message: "Please enter valid password!")
             return false
@@ -284,7 +315,13 @@ class CreateAccountVC: UIViewController, UICollectionViewDelegate, UICollectionV
             confirmPasswordTextField.showWarning(message: "Please enter valid password!")
             return false
         }
-        self.passPhrase = passPhraseTextField.text
+        
+        guard let passPhrase = passPhraseTextField.text, !passPhrase.trimmingCharacters(in: .whitespaces).isEmpty, passPhraseTextField.textColor != UIColor.templateWarning else {
+            passPhraseTextField.resignFirstResponder()
+            passPhraseTextField.showWarning(message: "Please enter valid password!")
+            return false
+        }
+        //self.passPhrase = passPhraseTextField.text
         if password != confirmedPassword {
             showAlert(title: "Password", message: "Password does not match!")
             return false
@@ -292,6 +329,7 @@ class CreateAccountVC: UIViewController, UICollectionViewDelegate, UICollectionV
         
         self.name = name
         self.password = password
+        self.passPhrase = passPhrase
         
         return true
     }
@@ -358,7 +396,7 @@ enum CreateWalletState: String{
 
 
 
-@available(iOS 11.0, *)
+//@available(iOS 10.0, *)
 class ColumnFlowLayout: UICollectionViewFlowLayout {
     
     let cellsPerRow: Int
@@ -380,9 +418,19 @@ class ColumnFlowLayout: UICollectionViewFlowLayout {
         super.prepare()
         
         guard let collectionView = collectionView else { return }
-        let marginsAndInsets = sectionInset.left + sectionInset.right + collectionView.safeAreaInsets.left + collectionView.safeAreaInsets.right + minimumInteritemSpacing * CGFloat(cellsPerRow - 1)
-        let itemWidth = ((collectionView.bounds.size.width - marginsAndInsets) / CGFloat(cellsPerRow)).rounded(.down)
-        itemSize = CGSize(width: itemWidth, height: 30)
+        
+        
+        if #available(iOS 11, *) {
+            let marginsAndInsets = sectionInset.left + sectionInset.right + collectionView.safeAreaInsets.left + collectionView.safeAreaInsets.right + minimumInteritemSpacing * CGFloat(cellsPerRow - 1)
+            let itemWidth = ((collectionView.bounds.size.width - marginsAndInsets) / CGFloat(cellsPerRow)).rounded(.down)
+            itemSize = CGSize(width: itemWidth, height: 30)
+        } else {
+            let marginsAndInsets = sectionInset.left + sectionInset.right  + minimumInteritemSpacing * CGFloat(cellsPerRow - 1)
+            let itemWidth = ((collectionView.bounds.size.width - marginsAndInsets) / CGFloat(cellsPerRow)).rounded(.down)
+            itemSize = CGSize(width: itemWidth, height: 30)
+        }
+        
+       
     }
     
     override func invalidationContext(forBoundsChange newBounds: CGRect) -> UICollectionViewLayoutInvalidationContext {

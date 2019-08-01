@@ -24,6 +24,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         setupUI()
         self.addGestureToHideKeyoardOnTappingAround()
+        self.setDefaultBaseUrl()
     }
     
     
@@ -43,12 +44,15 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     
     //MARK: - BUTTON TAPPED
     @IBAction func decryptButtonTapped(_ sender: Any) {
+        if noBaseUrl() {
+            return
+        }
         guard let walletName = walletNameTF.text, !walletName.trimmingCharacters(in: .whitespaces).isEmpty, walletNameTF.textColor != UIColor.templateWarning else {
             walletNameTF.resignFirstResponder()
             walletNameTF.showWarning(message: "Please enter valid wallet name!")
             return
         }
-        guard let password = passwordTF.text, !password.trimmingCharacters(in: .whitespaces).isEmpty, passwordTF.textColor != UIColor.templateWarning else {
+        guard let password = passwordTF.text, !password.trimmingCharacters(in: .whitespaces).isEmpty, passwordTF.textColor != UIColor.templateWarning/*, isValid(password, regEx: Constant.passWordRegEx)*/ else {
             passwordTF.resignFirstResponder()
             passwordTF.showWarning(message: "Please enter valid password!")
             return
@@ -57,6 +61,9 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func restoreButtonTapped(_ sender: Any) {
+        if noBaseUrl() {
+            return
+        }
         let restoreVC = UIStoryboard(name: "Signup", bundle: nil).instantiateViewController(withIdentifier: "signupVC")
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         self.navigationItem.backBarButtonItem?.tintColor = UIColor.white
@@ -65,12 +72,21 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     
     
     @IBAction func createButtonTapped(_ sender: Any) {
+        if noBaseUrl() {
+            return
+        }
         let restoreVC = UIStoryboard(name: "Signup", bundle: nil).instantiateViewController(withIdentifier: "createVC")
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         self.navigationItem.backBarButtonItem?.tintColor = UIColor.white
         self.navigationController?.pushViewController(restoreVC, animated: true)
     }
     
+    @IBAction func settingsButtonTapped(_ sender: Any) {
+        let appSettingsVC = UIStoryboard(name: "Signup", bundle: nil).instantiateViewController(withIdentifier: "settingsVC")
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        self.navigationItem.backBarButtonItem?.tintColor = UIColor.white
+        self.navigationController?.pushViewController(appSettingsVC, animated: true)
+    }
     
     //MARK: - API CALL
     func decryptWith(walletName: String, password: String) {
@@ -132,6 +148,33 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         self.view.endEditing(true)
     }
     
+    func setDefaultBaseUrl() {
+        let settingsManager = SettingsManager.sharedInstance()
+        if settingsManager.baseUrl == nil {
+            settingsManager.baseUrl = BaseURL.baseUrl
+        }
+    }
+    
+    func noBaseUrl() -> Bool {
+        let settingsManager = SettingsManager.sharedInstance()
+        if let _ = settingsManager.baseUrl {
+            return false
+        }
+        self.showAlertForBaseURL()
+        return true
+    }
+    
+    func showAlertForBaseURL() {
+        let alertController = UIAlertController(title: "Warning!", message: "App requires base URL first!!", preferredStyle: .alert)
+        let goToSettingsAction = UIAlertAction(title: "Set URL", style: .default) { (action) in
+            self.settingsButtonTapped(UIButton())
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        alertController.addAction(goToSettingsAction)
+        alertController.addAction(cancelAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
     
     //MARK: - TEXTFIELD DELEGATE METHOD
     func textFieldDidBeginEditing(_ textField: UITextField) {

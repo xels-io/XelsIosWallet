@@ -13,4 +13,5 @@ target 'XELS' do
     pod 'PKHUD', '~> 5.0'
     pod 'SwiftyJSON', '~> 4.0'
     pod 'IQKeyboardManagerSwift'
+    pod 'XLPagerTabStrip'
 end

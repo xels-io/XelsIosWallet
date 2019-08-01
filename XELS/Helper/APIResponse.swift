@@ -177,9 +177,10 @@ class Transaction: Mappable {
     var toAddress : String?
     var id : String?
     var amount : Int?
-    var payments : [Any]?
+    var payments : [Payment]?
     var confirmedInBlock : Int?
     var timestamp : String?
+    var fee: Int?
     
     required init?(map: Map) {
         
@@ -193,6 +194,56 @@ class Transaction: Mappable {
         payments <- map["payments"]
         confirmedInBlock <- map["confirmedInBlock"]
         timestamp <- map["timestamp"]
+        fee <- map["fee"]
+    }
+}
+
+class Payment: Mappable {
+    var destinationAddress: String?
+    var amount: Int?
+    
+    required init?(map: Map) {
+        
+    }
+    
+    func mapping(map: Map) {
+        destinationAddress <- map["destinationAddress"]
+        amount <- map["amount"]
+    }
+}
+
+class TransactionGeneralInfoResponse: BaseResponse {
+    var responseData: GeneralInfo?
+    
+    override func mapping(map: Map) {
+        super.mapping(map: map)
+        responseData <- map["InnerMsg"]
+    }
+}
+
+class GeneralInfo: Mappable {
+    var walletFilePath: String?
+    var network: String?
+    var creationTime: String?
+    var isDecrypted: Bool?
+    var lastBlockSyncedHeight: Int?
+    var chainTip: Int?
+    var isChainSynced: Bool?
+    var connectedNodes: Int?
+    
+    required init?(map: Map) {
+        
+    }
+    
+    func mapping(map: Map) {
+        walletFilePath <- map["walletFilePath"]
+        network <- map["network"]
+        creationTime <- map["creationTime"]
+        isDecrypted <- map["isDecrypted"]
+        lastBlockSyncedHeight <- map["lastBlockSyncedHeight"]
+        chainTip <- map["chainTip"]
+        isChainSynced <- map["isChainSynced"]
+        connectedNodes <- map["connectedNodes"]
     }
 }
 
@@ -297,5 +348,33 @@ class MnemonicResponse: BaseResponse {
     override func mapping(map: Map) {
         super.mapping(map: map)
         responseData <- map["InnerMsg"]
+    }
+}
+
+
+class AddressesResponse: BaseResponse {
+    
+    var addresses: [Address]?
+    
+    override func mapping(map: Map) {
+        super.mapping(map: map)
+        addresses <- map["InnerMsg.addresses"]
+    }
+}
+
+
+class Address: Mappable {
+    var address: String?
+    var isUser: Bool?
+    var isChange: Bool?
+    
+    required init?(map: Map) {
+        
+    }
+    
+    func mapping(map: Map) {
+        address <- map["address"]
+        isUser <- map["isUsed"]
+        isChange <- map["isChange"]
     }
 }

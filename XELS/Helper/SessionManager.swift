@@ -31,9 +31,9 @@ class SessionManager {
     func setAppropriateVC() {
         
         let appDeledate = UIApplication.shared.delegate as! AppDelegate
-        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
         
         if self.currentUser != nil {
+            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
             let frontViewController =  storyBoard.instantiateViewController(withIdentifier: "dashboardNav")
             let rightViewController = storyBoard.instantiateViewController(withIdentifier: "menuVC")
             
@@ -43,7 +43,8 @@ class SessionManager {
             
             appDeledate.window?.rootViewController = appDeledate.revealViewController
         } else {
-            let loginvc = storyBoard.instantiateViewController(withIdentifier: "loginNav")
+            let storyBoard = UIStoryboard(name: "Signup", bundle: nil)
+            let loginvc = storyBoard.instantiateViewController(withIdentifier: "loginNavVC")
             appDeledate.window?.rootViewController = loginvc
         }
         appDeledate.window?.makeKeyAndVisible()
@@ -88,5 +89,38 @@ class User: Mappable {
         walletName <- map["walletName"]
         accountName <- map["accountName"]
         password <- map["password"]
+    }
+}
+
+
+class SettingsManager {
+    private static let instance = SettingsManager()
+    
+    class func sharedInstance() -> SettingsManager {
+        return self.instance
+    }
+    
+    var baseUrl: String? {
+        get {
+            return self.getBaseUrl()
+        }
+        set {
+            self.setBaseUrlWith(newValue)
+        }
+    }
+    
+    private func getBaseUrl() -> String? {
+        if let baseUrl = UserDefaults.standard.string(forKey: "base_url") {
+            return baseUrl
+        }
+        return nil
+    }
+    
+    private func setBaseUrlWith(_ url: String?) {
+        if let _url = url {
+            UserDefaults.standard.set(_url, forKey: "base_url")
+        } else {
+            UserDefaults.standard.set(nil, forKey: "base_url")
+        }
     }
 }

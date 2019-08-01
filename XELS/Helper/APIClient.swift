@@ -75,6 +75,11 @@ class APIClient {
         }
     }
     
+    static func getTransactionDetailGeneralInfo(param: [String: Any], completion: @escaping(Result<TransactionGeneralInfoResponse>, Int?, Data?) -> Void) {
+        Alamofire.request(BaseURL.getURL, method: .get, parameters: param, encoding: URLEncoding.default, headers: nil).responseObject { (response: DataResponse<TransactionGeneralInfoResponse>) in
+            completion(response.result, response.response?.statusCode, response.data)
+        }
+    }
     
     
     static func getTransactionFee(param: [String: Any] , completion: @escaping(Result<TransactionFeeResponse>, Int?, Data?) -> Void) {
@@ -107,6 +112,14 @@ class APIClient {
             .responseObject(completionHandler: { (response: DataResponse<UnusedAddressRespnse>) in
                 completion(response.result, response.response?.statusCode, response.data)
             })
+    }
+    
+    
+    static func getAllAddresses(param: [String: Any], completion: @escaping (Result<AddressesResponse>, Int?, Data?) -> Void) {
+        Alamofire.request(BaseURL.getURL, method: .get, parameters: param, encoding: URLEncoding.default, headers: nil)
+            .responseObject { (response: DataResponse<AddressesResponse>) in
+                completion(response.result, response.response?.statusCode, response.data)
+        }
     }
     
     

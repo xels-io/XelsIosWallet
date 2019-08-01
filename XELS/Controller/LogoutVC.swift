@@ -12,7 +12,6 @@ import PKHUD
 class LogoutVC: UIViewController {
     @IBOutlet weak var yesButton: UIButton!
     @IBOutlet weak var noButton: UIButton!
-    @IBOutlet weak var messageContentView: UIView!
     @IBOutlet weak var logoutConfirmationLabel: UILabel!
     
     override func viewDidLoad() {
@@ -28,7 +27,7 @@ class LogoutVC: UIViewController {
         yesButton.backgroundColor = UIColor.templateGreen
         yesButton.doCornerAndBorder(radius: 6.0, border: 2.0, color: UIColor.templateGreen.cgColor)
         noButton.doCornerAndBorder(radius: 6.0, border: 2.0, color: UIColor.templateGreen.cgColor)
-        messageContentView.doCornerAndBorder(radius: 10.0, border: 2.0, color: UIColor.white.cgColor)
+        //messageContentView.doCornerAndBorder(radius: 10.0, border: 2.0, color: UIColor.white.cgColor)
     }
     
     

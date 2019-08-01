@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0583CFFD246D1D4B3503182F /* Pods_XELS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B22D8CF8D12CC6C3713FFF6 /* Pods_XELS.framework */; };
+		05A370D62293DC6300999418 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A370D42293DC6300999418 /* AlertView.swift */; };
+		05A370D72293DC6300999418 /* AlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05A370D52293DC6300999418 /* AlertView.xib */; };
 		88070DCF220C1038007D379A /* CreateAccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88070DCE220C1038007D379A /* CreateAccountVC.swift */; };
 		88070DD1220C3B3D007D379A /* WordsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88070DD0220C3B3D007D379A /* WordsCollectionViewCell.swift */; };
 		88137A7621D9E5D70007D0A5 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88137A7521D9E5D70007D0A5 /* APIClient.swift */; };
@@ -17,14 +19,21 @@
 		88137A8021D9F3D50007D0A5 /* ReceiveVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88137A7F21D9F3D50007D0A5 /* ReceiveVC.swift */; };
 		88137A8221DA0FB30007D0A5 /* APIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88137A8121DA0FB30007D0A5 /* APIResponse.swift */; };
 		88137A8421DA21780007D0A5 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88137A8321DA21780007D0A5 /* Extensions.swift */; };
+		8817674B225F33420006331B /* AppSettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8817674A225F33420006331B /* AppSettingsVC.swift */; };
 		8818150D21DF6D7B0006EA56 /* TransactionTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8818150B21DF6D7B0006EA56 /* TransactionTVCell.swift */; };
 		8818150E21DF6D7B0006EA56 /* TransactionTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8818150C21DF6D7B0006EA56 /* TransactionTVCell.xib */; };
+		884C1F0F2253441500525A67 /* AddressesContainerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884C1F0E2253441500525A67 /* AddressesContainerVC.swift */; };
+		884C1F11225358B400525A67 /* AddressesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884C1F10225358B400525A67 /* AddressesVC.swift */; };
 		885D6DCB21F6F4A300210C15 /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 885D6DC821F6E82F00210C15 /* Roboto-Black.ttf */; };
 		885D6DCC21F6F4A800210C15 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 885D6DC721F6E82E00210C15 /* Roboto-Bold.ttf */; };
 		885D6DCD21F6F4A800210C15 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 885D6DC921F6E82F00210C15 /* Roboto-Light.ttf */; };
 		885D6DCE21F6F4A800210C15 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 885D6DC521F6E82D00210C15 /* Roboto-Medium.ttf */; };
 		885D6DCF21F6F4A800210C15 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 885D6DCA21F6E83000210C15 /* Roboto-Regular.ttf */; };
 		885D6DD021F6F4A800210C15 /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 885D6DC621F6E82E00210C15 /* Roboto-Thin.ttf */; };
+		8863C032225B063F00C72AA2 /* AddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8863C030225B063F00C72AA2 /* AddressTableViewCell.swift */; };
+		8863C033225B063F00C72AA2 /* AddressTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8863C031225B063F00C72AA2 /* AddressTableViewCell.xib */; };
+		8863C035225B256200C72AA2 /* QRCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8863C034225B256200C72AA2 /* QRCodeView.swift */; };
+		8863C037225B257200C72AA2 /* QRCodeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8863C036225B257200C72AA2 /* QRCodeView.xib */; };
 		8864469021DF048C000BF785 /* MenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8864468F21DF048C000BF785 /* MenuVC.swift */; };
 		8864469321DF0626000BF785 /* MenuTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8864469221DF0626000BF785 /* MenuTVCell.swift */; };
 		8864469521DF0BE2000BF785 /* HeaderTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8864469421DF0BE2000BF785 /* HeaderTVCell.swift */; };
@@ -42,6 +51,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		05A370D42293DC6300999418 /* AlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
+		05A370D52293DC6300999418 /* AlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlertView.xib; sourceTree = "<group>"; };
 		6B22D8CF8D12CC6C3713FFF6 /* Pods_XELS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_XELS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		88070DCE220C1038007D379A /* CreateAccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountVC.swift; sourceTree = "<group>"; };
 		88070DD0220C3B3D007D379A /* WordsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordsCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -52,14 +63,21 @@
 		88137A7F21D9F3D50007D0A5 /* ReceiveVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveVC.swift; sourceTree = "<group>"; };
 		88137A8121DA0FB30007D0A5 /* APIResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResponse.swift; sourceTree = "<group>"; };
 		88137A8321DA21780007D0A5 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		8817674A225F33420006331B /* AppSettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettingsVC.swift; sourceTree = "<group>"; };
 		8818150B21DF6D7B0006EA56 /* TransactionTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionTVCell.swift; sourceTree = "<group>"; };
 		8818150C21DF6D7B0006EA56 /* TransactionTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransactionTVCell.xib; sourceTree = "<group>"; };
+		884C1F0E2253441500525A67 /* AddressesContainerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressesContainerVC.swift; sourceTree = "<group>"; };
+		884C1F10225358B400525A67 /* AddressesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressesVC.swift; sourceTree = "<group>"; };
 		885D6DC521F6E82D00210C15 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		885D6DC621F6E82E00210C15 /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
 		885D6DC721F6E82E00210C15 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
 		885D6DC821F6E82F00210C15 /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black.ttf"; sourceTree = "<group>"; };
 		885D6DC921F6E82F00210C15 /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
 		885D6DCA21F6E83000210C15 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
+		8863C030225B063F00C72AA2 /* AddressTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressTableViewCell.swift; sourceTree = "<group>"; };
+		8863C031225B063F00C72AA2 /* AddressTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddressTableViewCell.xib; sourceTree = "<group>"; };
+		8863C034225B256200C72AA2 /* QRCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeView.swift; sourceTree = "<group>"; };
+		8863C036225B257200C72AA2 /* QRCodeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QRCodeView.xib; sourceTree = "<group>"; };
 		8864468F21DF048C000BF785 /* MenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuVC.swift; sourceTree = "<group>"; };
 		8864469221DF0626000BF785 /* MenuTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTVCell.swift; sourceTree = "<group>"; };
 		8864469421DF0BE2000BF785 /* HeaderTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderTVCell.swift; sourceTree = "<group>"; };
@@ -94,6 +112,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		05A370D32293DC4D00999418 /* History */ = {
+			isa = PBXGroup;
+			children = (
+				88C218F121DF16FE0065E049 /* LatestTransactionVC.swift */,
+				05A370D42293DC6300999418 /* AlertView.swift */,
+				05A370D52293DC6300999418 /* AlertView.xib */,
+			);
+			path = History;
+			sourceTree = "<group>";
+		};
 		1FCF543E213D14438D7DDF3C /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -118,6 +146,17 @@
 			path = Helper;
 			sourceTree = "<group>";
 		};
+		88176749225F2EC80006331B /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				88070DCE220C1038007D379A /* CreateAccountVC.swift */,
+				88DC3A7F21FEAF0D009CD491 /* RestoreVC.swift */,
+				88BD94C121D9D63700132E8B /* LoginVC.swift */,
+				8817674A225F33420006331B /* AppSettingsVC.swift */,
+			);
+			path = SignUp;
+			sourceTree = "<group>";
+		};
 		885D6DC421F6E4B200210C15 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -131,6 +170,18 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		8863C02F225B05ED00C72AA2 /* Receive */ = {
+			isa = PBXGroup;
+			children = (
+				88137A7F21D9F3D50007D0A5 /* ReceiveVC.swift */,
+				884C1F0E2253441500525A67 /* AddressesContainerVC.swift */,
+				884C1F10225358B400525A67 /* AddressesVC.swift */,
+				8863C030225B063F00C72AA2 /* AddressTableViewCell.swift */,
+				8863C031225B063F00C72AA2 /* AddressTableViewCell.xib */,
+			);
+			path = Receive;
+			sourceTree = "<group>";
+		};
 		8864469121DF05F7000BF785 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -139,6 +190,8 @@
 				8818150B21DF6D7B0006EA56 /* TransactionTVCell.swift */,
 				8818150C21DF6D7B0006EA56 /* TransactionTVCell.xib */,
 				88070DD0220C3B3D007D379A /* WordsCollectionViewCell.swift */,
+				8863C034225B256200C72AA2 /* QRCodeView.swift */,
+				8863C036225B257200C72AA2 /* QRCodeView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -197,15 +250,13 @@
 		88BD94BE21D9CB0F00132E8B /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				88070DCE220C1038007D379A /* CreateAccountVC.swift */,
-				88DC3A7F21FEAF0D009CD491 /* RestoreVC.swift */,
-				88BD94C121D9D63700132E8B /* LoginVC.swift */,
+				05A370D32293DC4D00999418 /* History */,
+				88176749225F2EC80006331B /* SignUp */,
 				8864468F21DF048C000BF785 /* MenuVC.swift */,
 				88137A7B21D9F3BF0007D0A5 /* DashboardVC.swift */,
-				88C218F121DF16FE0065E049 /* LatestTransactionVC.swift */,
-				88137A7F21D9F3D50007D0A5 /* ReceiveVC.swift */,
 				88137A7D21D9F3CA0007D0A5 /* SendVC.swift */,
 				88961C1E21DF287B007D3216 /* LogoutVC.swift */,
+				8863C02F225B05ED00C72AA2 /* Receive */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -286,9 +337,12 @@
 				885D6DCB21F6F4A300210C15 /* Roboto-Black.ttf in Resources */,
 				88DC3A7C21FEA122009CD491 /* Signup.storyboard in Resources */,
 				885D6DCD21F6F4A800210C15 /* Roboto-Light.ttf in Resources */,
+				05A370D72293DC6300999418 /* AlertView.xib in Resources */,
 				885D6DCF21F6F4A800210C15 /* Roboto-Regular.ttf in Resources */,
+				8863C037225B257200C72AA2 /* QRCodeView.xib in Resources */,
 				8818150E21DF6D7B0006EA56 /* TransactionTVCell.xib in Resources */,
 				885D6DD021F6F4A800210C15 /* Roboto-Thin.ttf in Resources */,
+				8863C033225B063F00C72AA2 /* AddressTableViewCell.xib in Resources */,
 				88BD94B021D9CA5800132E8B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -304,13 +358,14 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-XELS/Pods-XELS-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-XELS/Pods-XELS-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireObjectMapper/AlamofireObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/PKHUD/PKHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/XLPagerTabStrip/XLPagerTabStrip.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
@@ -322,10 +377,11 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PKHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XLPagerTabStrip.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-XELS/Pods-XELS-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-XELS/Pods-XELS-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		6CBC6DEE52595162D8E2B156 /* [CP] Check Pods Manifest.lock */ = {
@@ -360,6 +416,8 @@
 				88137A7A21D9E7EC0007D0A5 /* Constants.swift in Sources */,
 				88070DCF220C1038007D379A /* CreateAccountVC.swift in Sources */,
 				88070DD1220C3B3D007D379A /* WordsCollectionViewCell.swift in Sources */,
+				8863C032225B063F00C72AA2 /* AddressTableViewCell.swift in Sources */,
+				884C1F0F2253441500525A67 /* AddressesContainerVC.swift in Sources */,
 				88137A7E21D9F3CA0007D0A5 /* SendVC.swift in Sources */,
 				8864469321DF0626000BF785 /* MenuTVCell.swift in Sources */,
 				88137A7C21D9F3BF0007D0A5 /* DashboardVC.swift in Sources */,
@@ -367,12 +425,16 @@
 				88BD94C221D9D63700132E8B /* LoginVC.swift in Sources */,
 				8864469521DF0BE2000BF785 /* HeaderTVCell.swift in Sources */,
 				8818150D21DF6D7B0006EA56 /* TransactionTVCell.swift in Sources */,
+				8863C035225B256200C72AA2 /* QRCodeView.swift in Sources */,
+				884C1F11225358B400525A67 /* AddressesVC.swift in Sources */,
 				8864469021DF048C000BF785 /* MenuVC.swift in Sources */,
+				8817674B225F33420006331B /* AppSettingsVC.swift in Sources */,
 				88137A8421DA21780007D0A5 /* Extensions.swift in Sources */,
 				88BD94AB21D9CA5800132E8B /* AppDelegate.swift in Sources */,
 				88DC3A8021FEAF0D009CD491 /* RestoreVC.swift in Sources */,
 				88137A8021D9F3D50007D0A5 /* ReceiveVC.swift in Sources */,
 				88961C1F21DF287B007D3216 /* LogoutVC.swift in Sources */,
+				05A370D62293DC6300999418 /* AlertView.swift in Sources */,
 				889B02F221DCC0CB00A505BD /* SWRevealViewController.m in Sources */,
 				88137A7621D9E5D70007D0A5 /* APIClient.swift in Sources */,
 				88137A8221DA0FB30007D0A5 /* APIResponse.swift in Sources */,
@@ -526,16 +588,16 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = 82FK4WWVXQ;
+				DEVELOPMENT_TEAM = 83J9YVKHNK;
 				INFOPLIST_FILE = XELS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.siliconorchard.xels;
+				PRODUCT_BUNDLE_IDENTIFIER = com.xels.wallet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "XELS Dev";
+				PROVISIONING_PROFILE_SPECIFIER = XELS_DEV;
 				SWIFT_OBJC_BRIDGING_HEADER = "XELS/Helper/XELS-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
@@ -551,16 +613,16 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = 82FK4WWVXQ;
+				DEVELOPMENT_TEAM = 83J9YVKHNK;
 				INFOPLIST_FILE = XELS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.siliconorchard.xels;
+				PRODUCT_BUNDLE_IDENTIFIER = com.xels.wallet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "XELS Adhoc New";
+				PROVISIONING_PROFILE_SPECIFIER = XELS_DIST;
 				SWIFT_OBJC_BRIDGING_HEADER = "XELS/Helper/XELS-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
