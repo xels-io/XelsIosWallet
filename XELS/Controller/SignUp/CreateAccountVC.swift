@@ -277,17 +277,17 @@ class CreateAccountVC: UIViewController, UICollectionViewDelegate, UICollectionV
     func isValidMnemonics() -> Bool{
         guard let word5 = Word5TextField.text, !word5.trimmingCharacters(in: .whitespaces).isEmpty, Word5TextField.textColor != UIColor.templateWarning else {
             Word5TextField.resignFirstResponder()
-            Word5TextField.showWarning(message: "Please enter valid word!")
+            showWarning(message: "Please enter valid word!")
             return false
         }
         guard let word8 = word8TextField.text, !word8.trimmingCharacters(in: .whitespaces).isEmpty, word8TextField.textColor != UIColor.templateWarning else {
             word8TextField.resignFirstResponder()
-            word8TextField.showWarning(message: "Please enter valid word!")
+            showWarning(message: "Please enter valid word!")
             return false
         }
         guard let word12 = word12TextField.text, !word12.trimmingCharacters(in: .whitespaces).isEmpty, word12TextField.textColor != UIColor.templateWarning else {
             word12TextField.resignFirstResponder()
-            word12TextField.showWarning(message: "Please enter valid word!")
+            showWarning(message: "Please enter valid word!")
             return false
         }
         self.word5 = word5
@@ -302,23 +302,23 @@ class CreateAccountVC: UIViewController, UICollectionViewDelegate, UICollectionV
     func isValidCredentials() -> Bool {
         guard let name = nameTextField.text, !name.trimmingCharacters(in: .whitespaces).isEmpty, nameTextField.textColor != UIColor.templateWarning else {
             nameTextField.resignFirstResponder()
-            nameTextField.showWarning(message: "Please enter valid name!")
+            showWarning(message: "Please enter valid name!")
             return false
         }
         guard let password = passwordTextField.text, !password.trimmingCharacters(in: .whitespaces).isEmpty, passwordTextField.textColor != UIColor.templateWarning, isValid(password, regEx: Constant.passWordRegEx) else {
             passwordTextField.resignFirstResponder()
-            passwordTextField.showWarning(message: "Please enter valid password!")
+            showWarning(message: "A password must contain at least one uppercase letter, one lowercase letter, one number and one special character. A password must be at least 8 character long.")
             return false
         }
         guard let confirmedPassword = confirmPasswordTextField.text, !confirmedPassword.trimmingCharacters(in: .whitespaces).isEmpty, confirmPasswordTextField.textColor != UIColor.templateWarning else {
             confirmPasswordTextField.resignFirstResponder()
-            confirmPasswordTextField.showWarning(message: "Please enter valid password!")
+            showWarning(message: "A password must contain at least one uppercase letter, one lowercase letter, one number and one special character. A password must be at least 8 character long.")
             return false
         }
         
         guard let passPhrase = passPhraseTextField.text, !passPhrase.trimmingCharacters(in: .whitespaces).isEmpty, passPhraseTextField.textColor != UIColor.templateWarning else {
             passPhraseTextField.resignFirstResponder()
-            passPhraseTextField.showWarning(message: "Please enter valid password!")
+            showWarning(message: "Your passphrase will be required to recover your wallet in the future.")
             return false
         }
         //self.passPhrase = passPhraseTextField.text

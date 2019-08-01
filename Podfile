@@ -14,4 +14,5 @@ target 'XELS' do
     pod 'SwiftyJSON', '~> 4.0'
     pod 'IQKeyboardManagerSwift'
     pod 'XLPagerTabStrip'
+    pod 'Toast-Swift'
 end

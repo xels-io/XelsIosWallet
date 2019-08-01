@@ -455,15 +455,15 @@ class SendVC: UIViewController, UITextFieldDelegate, AVCaptureMetadataOutputObje
     func isSendParametersValid() -> Bool {
         if !isValid(textField: amountTF) {
             amountTF.resignFirstResponder()
-            amountTF.showWarning(message: "Please enter valid amount!")
+            showWarning(message: "Please enter valid amount!")
             return false
         } else if !isValid(textField: destinationAddressTF) {
             destinationAddressTF.resignFirstResponder()
-            destinationAddressTF.showWarning(message: "Please enter destination address!")
+            showWarning(message: "Please enter destination address!")
             return false
         } else if !isValid(textField: walletPasswordTF) {
             walletPasswordTF.resignFirstResponder()
-            walletPasswordTF.showWarning(message: "Please enter wallet password!")
+            showWarning(message: "Please enter wallet password!")
             return false
         }
         return true

@@ -7,17 +7,18 @@
 //
 
 import UIKit
+import Toast_Swift
 
 extension UITextField {
     
-    func showWarning(message: String){
-        self.backgroundColor = UIColor.warningBackground
-        self.textColor = UIColor.templateWarning
-        self.text = message
-        if self.isSecureTextEntry {
-            self.isSecureTextEntry = false
-        }
-    }
+//    func showWarning(message: String){
+//        self.backgroundColor = UIColor.warningBackground
+//        self.textColor = UIColor.templateWarning
+//        self.text = message
+//        if self.isSecureTextEntry {
+//            self.isSecureTextEntry = false
+//        }
+//    }
     
     func removeWarning(isSecure: Bool){
         self.isSecureTextEntry = isSecure
@@ -185,5 +186,9 @@ extension UIViewController {
     func isValid(_ value: String, regEx: String) -> Bool {
         let emailTest = NSPredicate(format:"SELF MATCHES[c] %@", regEx)
         return emailTest.evaluate(with: value)
+    }
+    
+    func showWarning(message: String){
+       self.view.makeToast(message, duration: 3.0, position: .bottom)
     }
 }

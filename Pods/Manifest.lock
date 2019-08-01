@@ -7,6 +7,7 @@ PODS:
   - ObjectMapper (3.4.2)
   - PKHUD (5.2.1)
   - SwiftyJSON (4.2.0)
+  - Toast-Swift (5.0.0)
   - XLPagerTabStrip (8.1.0)
 
 DEPENDENCIES:
@@ -16,6 +17,7 @@ DEPENDENCIES:
   - ObjectMapper (~> 3.4)
   - PKHUD (~> 5.0)
   - SwiftyJSON (~> 4.0)
+  - Toast-Swift
   - XLPagerTabStrip
 
 SPEC REPOS:
@@ -26,6 +28,7 @@ SPEC REPOS:
     - ObjectMapper
     - PKHUD
     - SwiftyJSON
+    - Toast-Swift
     - XLPagerTabStrip
 
 SPEC CHECKSUMS:
@@ -35,8 +38,9 @@ SPEC CHECKSUMS:
   ObjectMapper: 0d4402610f4e468903ae64629eec4784531e5c51
   PKHUD: 4e6162c4c39ac367c6934e9855c6b4762ee16256
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
+  Toast-Swift: 36f4720243c8582c2be243a60a51e193c761f541
   XLPagerTabStrip: 22d4c58200d7c105e0e407ab6bfd01a5d85014be
 
-PODFILE CHECKSUM: f188b986c7e484105d43fe989c98126af0a6bdb3
+PODFILE CHECKSUM: d3a2f73137ec8ca8f91a37f8165d16b205733f6e
 
 COCOAPODS: 1.6.1

@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "AF1456C007BB8F2E481F911B53122007"
-               BuildableName = "XLPagerTabStrip.bundle"
-               BlueprintName = "XLPagerTabStrip-XLPagerTabStrip"
+               BlueprintIdentifier = "5E4BADF84A6FADE46823955E297D327E"
+               BuildableName = "Toast_Swift.framework"
+               BlueprintName = "Toast-Swift"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "AF1456C007BB8F2E481F911B53122007"
-            BuildableName = "XLPagerTabStrip.bundle"
-            BlueprintName = "XLPagerTabStrip-XLPagerTabStrip"
+            BlueprintIdentifier = "5E4BADF84A6FADE46823955E297D327E"
+            BuildableName = "Toast_Swift.framework"
+            BlueprintName = "Toast-Swift"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

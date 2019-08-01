@@ -49,12 +49,14 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         }
         guard let walletName = walletNameTF.text, !walletName.trimmingCharacters(in: .whitespaces).isEmpty, walletNameTF.textColor != UIColor.templateWarning else {
             walletNameTF.resignFirstResponder()
-            walletNameTF.showWarning(message: "Please enter valid wallet name!")
+            //walletNameTF.showWarning(message: "Please enter valid wallet name!")
+            showWarning(message: "Please enter valid wallet name!")
             return
         }
         guard let password = passwordTF.text, !password.trimmingCharacters(in: .whitespaces).isEmpty, passwordTF.textColor != UIColor.templateWarning/*, isValid(password, regEx: Constant.passWordRegEx)*/ else {
             passwordTF.resignFirstResponder()
-            passwordTF.showWarning(message: "Please enter valid password!")
+            //passwordTF.showWarning(message: "Please enter valid password!")
+            showWarning(message: "Please enter valid password!")
             return
         }
         decryptWith(walletName: walletName, password: password)
@@ -107,20 +109,23 @@ class LoginVC: UIViewController, UITextFieldDelegate {
                         self.goToDashboardViewController()
                         return
                     })
+                
                 } else {
                     if let errors = loginResponse.errors, let error = errors.first {
                         guard let message = error.message else {
                             HUD.flash(.error)
                             return
                         }
-                        HUD.flash(.label(message), delay: 0.2)
+                        //HUD.flash(.label(message), delay: 0.2)
+                        self.showWarning(message: message)
                         return
                     }
                     HUD.flash(.error)
                 }
                 break
             case .failure(let error):
-                HUD.flash(.label(error.localizedDescription), delay: 0.2)
+                //HUD.flash(.label(error.localizedDescription), delay: 0.2)
+                self.showWarning(message: error as! String)
                 break
             }
         }
