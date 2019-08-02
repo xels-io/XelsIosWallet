@@ -208,6 +208,6 @@ extension UIViewController {
         style.backgroundColor = .white
         style.cornerRadius = 5
         style.displayShadow = true
-        self.view.makeToast(message, duration: 3.0, position: .bottom, style: style)
+        self.view.makeToast(message, duration: 5.0, position: .bottom, style: style)
     }
 }

@@ -49,6 +49,7 @@ class RestoreVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
         creationDateTF.doCornerAndBorder(radius: 8.0, border: 1.0, color: UIColor.templateGreen.cgColor)
         secretWordTV.doCornerAndBorder(radius: 8.0, border: 1.0, color: UIColor.templateGreen.cgColor)
         passwordTF.doCornerAndBorder(radius: 8.0, border: 1.0, color: UIColor.templateGreen.cgColor)
+        confirmPasswordTF.doCornerAndBorder(radius: 8.0, border: 1.0, color: UIColor.templateGreen.cgColor)
         passPhraseTF.doCornerAndBorder(radius: 8.0, border: 1.0, color: UIColor.templateGreen.cgColor)
         
         walletNameTF.delegate = self
