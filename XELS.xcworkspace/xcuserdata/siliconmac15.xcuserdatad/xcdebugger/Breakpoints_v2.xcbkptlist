@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "XELS/Controller/SignUp/CreateAccountVC.swift"
-            timestampString = "586421144.9777091"
+            timestampString = "586431220.970566"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "322"
-            endingLineNumber = "322"
-            landmarkName = "isValidCredentials()"
+            startingLineNumber = "354"
+            endingLineNumber = "354"
+            landmarkName = "showAlert(title:message:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -26,12 +26,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "XELS/Controller/SignUp/CreateAccountVC.swift"
-            timestampString = "586421144.977774"
+            timestampString = "586431220.970656"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "237"
-            endingLineNumber = "237"
-            landmarkName = "selectRandomMnemonicIndex()"
+            startingLineNumber = "265"
+            endingLineNumber = "265"
+            landmarkName = "goToMnemonicPage()"
             landmarkType = "7">
             <Locations>
                <Location
@@ -74,12 +74,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "XELS/Controller/SignUp/CreateAccountVC.swift"
-            timestampString = "586421144.9778219"
+            timestampString = "586431220.97071"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "236"
-            endingLineNumber = "236"
-            landmarkName = "selectRandomMnemonicIndex()"
+            startingLineNumber = "264"
+            endingLineNumber = "264"
+            landmarkName = "goToMnemonicPage()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -90,12 +90,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "XELS/Controller/SignUp/CreateAccountVC.swift"
-            timestampString = "586421144.9778661"
+            timestampString = "586431220.97076"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "238"
-            endingLineNumber = "238"
-            landmarkName = "selectRandomMnemonicIndex()"
+            startingLineNumber = "266"
+            endingLineNumber = "266"
+            landmarkName = "goToMnemonicPage()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

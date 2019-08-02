@@ -207,7 +207,10 @@ class RestoreVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
             switch result {
             case .success(let restoreResponse):
                 guard let statusCode = restoreResponse.statusCode else {
-                    HUD.flash(.label("Something went wrong!"), delay: 0.2)
+//                    HUD.flash(.label("Something went wrong!"), delay: 0.2)
+                    PKHUD.sharedHUD.hide(afterDelay: 0.2) { success in
+                        self.showWarning(message:"Something went wrong!")
+                    }
                     return
                 }
                 if statusCode == 200 {
@@ -218,17 +221,29 @@ class RestoreVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
                 } else {
                     if let errors = restoreResponse.errors, let error = errors.first {
                         guard let message = error.message else {
-                            HUD.flash(.label("Something went wrong!"), delay: 0.2)
+                            //HUD.flash(.label("Something went wrong!"), delay: 0.2)
+                            PKHUD.sharedHUD.hide(afterDelay: 0.2) { success in
+                                self.showWarning(message:error.message ?? "")
+                            }
                             return
                         }
-                        HUD.flash(.label(message), delay: 0.2)
+//                        HUD.flash(.label(message), delay: 0.2)
+                        PKHUD.sharedHUD.hide(afterDelay: 0.2) { success in
+                            self.showWarning(message: message)
+                        }
                         return
                     }
-                    HUD.flash(.label("Something went wrong!"), delay: 0.2)
+                    //HUD.flash(.label("Something went wrong!"), delay: 0.2)
+                    PKHUD.sharedHUD.hide(afterDelay: 0.2) { success in
+                        self.showWarning(message:"Something went wrong!")
+                    }
                 }
                 break
             case .failure:
-                HUD.flash(.label("Something went wrong!"), delay: 0.2)
+                //HUD.flash(.label("Something went wrong!"), delay: 0.2)
+                PKHUD.sharedHUD.hide(afterDelay: 0.2) { success in
+                    self.showWarning(message:"Something went wrong!")
+                }
                 break
             }
         }

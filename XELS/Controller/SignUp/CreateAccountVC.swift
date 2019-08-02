@@ -141,7 +141,8 @@ class CreateAccountVC: UIViewController, UICollectionViewDelegate, UICollectionV
     @IBAction func copyToClipboardButtonTapped(_ sender: Any) {
         let pasteboard = UIPasteboard.general
         pasteboard.string = self.mnemonic
-        HUD.flash(.label("Copied"), delay: 0.3)
+        //HUD.flash(.label("Copied"), delay: 0.3)
+        showWarning(message: "Copied")
     }
     
     //MARK: - API CALL
@@ -171,14 +172,20 @@ class CreateAccountVC: UIViewController, UICollectionViewDelegate, UICollectionV
                             HUD.flash(.error)
                             return
                         }
-                        HUD.flash(.label(message), delay: 0.2)
+                        //HUD.flash(.label(message), delay: 0.2)
+                        PKHUD.sharedHUD.hide(afterDelay: 0.2) { success in
+                            self.showWarning(message: message)
+                        }
                         return
                     }
                     HUD.flash(.error)
                 }
                 break
             case .failure(let error):
-                HUD.flash(.label(error.localizedDescription), delay: 0.2)
+                //HUD.flash(.label(error.localizedDescription), delay: 0.2)
+                PKHUD.sharedHUD.hide(afterDelay: 0.2) { success in
+                    self.showWarning(message: error.localizedDescription as! String)
+                }
                 break
             }
         }
@@ -215,14 +222,20 @@ class CreateAccountVC: UIViewController, UICollectionViewDelegate, UICollectionV
                             HUD.flash(.error)
                             return
                         }
-                        HUD.flash(.label(message), delay: 0.2)
+//                        HUD.flash(.label(message), delay: 0.2)
+                        PKHUD.sharedHUD.hide(afterDelay: 0.2) { success in
+                            self.showWarning(message: message)
+                        }
                         return
                     }
                     HUD.flash(.error)
                 }
                 break
             case .failure(let error):
-                HUD.flash(.label(error.localizedDescription), delay: 0.2)
+                //HUD.flash(.label(error.localizedDescription), delay: 0.2)
+                PKHUD.sharedHUD.hide(afterDelay: 0.2) { success in
+                    self.showWarning(message: error.localizedDescription)
+                }
                 break
             }
         }
@@ -261,7 +274,8 @@ class CreateAccountVC: UIViewController, UICollectionViewDelegate, UICollectionV
             if word5 == mnemonics[randomIndex[0] - 1] && word8 == mnemonics[randomIndex[1] - 1] && word12 == mnemonics[randomIndex[2] - 1] {
                 createAccountWith(mnemonic: mnemonic, name: name, password: password, passphrase: passPhrase)
             } else {
-                HUD.flash(.label("Sorry! Mnemonic words does not match."), delay: 0.2)
+                //HUD.flash(.label("Sorry! Mnemonic words does not match."), delay: 0.2)
+                showWarning(message: "Sorry! Mnemonic words does not match")
             }
         }
     }

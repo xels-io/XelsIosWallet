@@ -206,17 +206,8 @@ extension UIViewController {
         var style = ToastStyle()
         style.messageColor = .black
         style.backgroundColor = .white
-        style.cornerRadius = 0
+        style.cornerRadius = 5
         style.displayShadow = true
         self.view.makeToast(message, duration: 3.0, position: .bottom, style: style)
-    }
-    
-    func showWarningasButtonResponse(message: String){
-        var style = ToastStyle()
-        style.messageColor = .black
-        style.backgroundColor = .white
-        style.cornerRadius = 0
-        style.displayShadow = true
-        self.view.makeToast(message, duration: 3.0, position: .center, style: style)
     }
 }
