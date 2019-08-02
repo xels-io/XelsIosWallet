@@ -300,36 +300,35 @@ class CreateAccountVC: UIViewController, UICollectionViewDelegate, UICollectionV
     
     
     func isValidCredentials() -> Bool {
-        guard let name = nameTextField.text, !name.trimmingCharacters(in: .whitespaces).isEmpty, nameTextField.textColor != UIColor.templateWarning else {
+        
+        if !isValid(textField: nameTextField) {
             nameTextField.resignFirstResponder()
-            showWarning(message: "Please enter valid name!")
+            showWarning(message: "Please enter a valid name")
             return false
-        }
-        guard let password = passwordTextField.text, !password.trimmingCharacters(in: .whitespaces).isEmpty, passwordTextField.textColor != UIColor.templateWarning, isValid(password, regEx: Constant.passWordRegEx) else {
+        } else if !isValid(textField: passwordTextField) {
             passwordTextField.resignFirstResponder()
-            showWarning(message: "A password must contain at least one uppercase letter, one lowercase letter, one number and one special character. A password must be at least 8 character long.")
+            showWarning(message: "Password field is empty!")
             return false
-        }
-        guard let confirmedPassword = confirmPasswordTextField.text, !confirmedPassword.trimmingCharacters(in: .whitespaces).isEmpty, confirmPasswordTextField.textColor != UIColor.templateWarning else {
+        } else if !isValid(passwordTextField.text!, regEx: Constant.passWordRegEx) {
+            passwordTextField.resignFirstResponder()
+            showWarning(message: "A password must contain at least one uppercase letter, one lowercase letter, one number and one special character. A password must be at least 8 character long")
+            return false
+        } else if !isValid(textField: confirmPasswordTextField) {
             confirmPasswordTextField.resignFirstResponder()
-            showWarning(message: "A password must contain at least one uppercase letter, one lowercase letter, one number and one special character. A password must be at least 8 character long.")
+            showWarning(message: "Confirm password field is empty!")
             return false
-        }
-        
-        guard let passPhrase = passPhraseTextField.text, !passPhrase.trimmingCharacters(in: .whitespaces).isEmpty, passPhraseTextField.textColor != UIColor.templateWarning else {
+        } else if passwordTextField.text != confirmPasswordTextField.text {
+            showWarning(message: "Password didn't match")
+            return false
+        } else if !isValid(textField: passPhraseTextField) {
             passPhraseTextField.resignFirstResponder()
-            showWarning(message: "Your passphrase will be required to recover your wallet in the future.")
-            return false
-        }
-        //self.passPhrase = passPhraseTextField.text
-        if password != confirmedPassword {
-            showAlert(title: "Password", message: "Password does not match!")
+            showWarning(message: "Your passphrase will be required to recover your wallet in the future")
             return false
         }
         
-        self.name = name
-        self.password = password
-        self.passPhrase = passPhrase
+        self.name = nameTextField.text
+        self.password = passwordTextField.text
+        self.passPhrase = passPhraseTextField.text
         
         return true
     }

@@ -424,15 +424,15 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="885"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N2C-Ug-PrI" userLabel="ContentView">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="900"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="947"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="85I-qa-ZRy">
-                                                <rect key="frame" x="20" y="40" width="335" height="742"/>
+                                                <rect key="frame" x="20" y="40" width="335" height="789"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="a7p-97-WOk">
                                                         <rect key="frame" x="0.0" y="0.0" width="335" height="116"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dmk-xs-OF9">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Wallet Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dmk-xs-OF9">
                                                                 <rect key="frame" x="0.0" y="0.0" width="335" height="55"/>
                                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
                                                                 <nil key="textColor"/>
@@ -450,7 +450,7 @@
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="PTj-2y-VKn">
-                                                        <rect key="frame" x="0.0" y="152" width="335" height="116"/>
+                                                        <rect key="frame" x="0.0" y="131" width="335" height="116"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Earliest Possible Creation Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EMr-2O-2xB">
                                                                 <rect key="frame" x="0.0" y="0.0" width="335" height="55"/>
@@ -470,7 +470,7 @@
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="Wd7-Ec-h27">
-                                                        <rect key="frame" x="0.0" y="304" width="335" height="140"/>
+                                                        <rect key="frame" x="0.0" y="262" width="335" height="140"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Secret Words" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K2l-94-nZK">
                                                                 <rect key="frame" x="0.0" y="0.0" width="335" height="24"/>
@@ -490,9 +490,9 @@
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="I0G-6B-72C">
-                                                        <rect key="frame" x="0.0" y="480" width="335" height="116"/>
+                                                        <rect key="frame" x="0.0" y="417" width="335" height="116"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m76-Bo-LbN">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m76-Bo-LbN">
                                                                 <rect key="frame" x="0.0" y="0.0" width="335" height="55"/>
                                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
                                                                 <nil key="textColor"/>
@@ -509,8 +509,28 @@
                                                             </textField>
                                                         </subviews>
                                                     </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="GHQ-jg-hXD">
+                                                        <rect key="frame" x="0.0" y="548" width="335" height="116"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirm Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o6d-ol-WM0">
+                                                                <rect key="frame" x="0.0" y="0.0" width="335" height="55"/>
+                                                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <textField opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter a password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MSG-eR-Buj">
+                                                                <rect key="frame" x="0.0" y="61" width="335" height="55"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="55" id="xBn-GT-IRd"/>
+                                                                </constraints>
+                                                                <nil key="textColor"/>
+                                                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="17"/>
+                                                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                                            </textField>
+                                                        </subviews>
+                                                    </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="F5r-Gd-8H0">
-                                                        <rect key="frame" x="0.0" y="632" width="335" height="110"/>
+                                                        <rect key="frame" x="0.0" y="679" width="335" height="110"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Passphrase" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EAh-vO-Hpe">
                                                                 <rect key="frame" x="0.0" y="0.0" width="335" height="55"/>
@@ -533,7 +553,7 @@
                                                 </constraints>
                                             </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wbB-si-R4K">
-                                                <rect key="frame" x="112.5" y="805" width="150" height="45"/>
+                                                <rect key="frame" x="112.5" y="852" width="150" height="45"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="150" id="1kr-dB-HW9"/>
                                                     <constraint firstAttribute="height" constant="45" id="zCd-lx-3VV"/>
@@ -588,6 +608,7 @@
                     <navigationItem key="navigationItem" id="6bu-Dd-FbV"/>
                     <size key="freeformSize" width="375" height="900"/>
                     <connections>
+                        <outlet property="confirmPasswordTF" destination="MSG-eR-Buj" id="dIa-Jz-h1N"/>
                         <outlet property="creationDateTF" destination="Ml2-j8-Li8" id="Ytr-VX-fwo"/>
                         <outlet property="passPhraseTF" destination="Vbg-5I-y5t" id="LW7-aK-uZT"/>
                         <outlet property="passwordTF" destination="9eC-Tq-0aw" id="Vi6-g0-wc8"/>

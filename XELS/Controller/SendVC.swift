@@ -478,12 +478,6 @@ class SendVC: UIViewController, UITextFieldDelegate, AVCaptureMetadataOutputObje
         return true
     }
     
-    func isValid(textField: UITextField) -> Bool {
-        if let text = textField.text, !text.trimmingCharacters(in: .whitespaces).isEmpty {
-            return true
-        }
-        return false
-    }
     
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {

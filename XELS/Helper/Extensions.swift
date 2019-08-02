@@ -20,13 +20,13 @@ extension UITextField {
 //        }
 //    }
     
-    func removeWarning(isSecure: Bool){
-        self.isSecureTextEntry = isSecure
-        self.layer.borderColor = UIColor.templateGreen.cgColor
-        self.backgroundColor = UIColor.white
-        self.textColor = UIColor.black
-        self.text = ""
-    }
+//    func removeWarning(isSecure: Bool){
+//        self.isSecureTextEntry = isSecure
+//        self.layer.borderColor = UIColor.templateGreen.cgColor
+//        self.backgroundColor = UIColor.white
+//        self.textColor = UIColor.black
+//        self.text = ""
+//    }
     
 }
 
@@ -47,7 +47,6 @@ extension UITextView {
         self.text = ""
 //        self.placeholder = ""
     }
-    
 }
 
 extension UIColor {
@@ -188,7 +187,36 @@ extension UIViewController {
         return emailTest.evaluate(with: value)
     }
     
+    func isValid(textField: UITextField) -> Bool {
+        if let text = textField.text, !text.trimmingCharacters(in: .whitespaces).isEmpty {
+            return true
+        }
+        return false
+    }
+    
+    func isValid(textView: UITextView) -> Bool {
+        if let text = textView.text, !text.trimmingCharacters(in: .whitespaces).isEmpty {
+            return true
+        }
+        return false
+    }
+    
+    
     func showWarning(message: String){
-       self.view.makeToast(message, duration: 3.0, position: .bottom)
+        var style = ToastStyle()
+        style.messageColor = .black
+        style.backgroundColor = .white
+        style.cornerRadius = 0
+        style.displayShadow = true
+        self.view.makeToast(message, duration: 3.0, position: .bottom, style: style)
+    }
+    
+    func showWarningasButtonResponse(message: String){
+        var style = ToastStyle()
+        style.messageColor = .black
+        style.backgroundColor = .white
+        style.cornerRadius = 0
+        style.displayShadow = true
+        self.view.makeToast(message, duration: 3.0, position: .center, style: style)
     }
 }

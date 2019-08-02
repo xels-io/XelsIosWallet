@@ -16,6 +16,7 @@ class RestoreVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
 //    @IBOutlet weak var secretWordTF: UITextField!
     @IBOutlet weak var secretWordTV: UITextView!
     @IBOutlet weak var passwordTF: UITextField!
+    @IBOutlet weak var confirmPasswordTF: UITextField!
     @IBOutlet weak var passPhraseTF: UITextField!
     @IBOutlet weak var restoreButton: UIButton!
     
@@ -96,9 +97,9 @@ class RestoreVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if textField.textColor == UIColor.templateWarning {
             if textField == passwordTF {
-                textField.removeWarning(isSecure: true)
+                //textField.removeWarning(isSecure: true)
             } else {
-                textField.removeWarning(isSecure: false)
+                //textField.removeWarning(isSecure: false)
             }
         }
     }
@@ -137,23 +138,6 @@ class RestoreVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
         creationDateTF.text = formatter.string(from: datePicker.date)
     }
     
-    func isValid(textField: UITextField) -> Bool {
-        if let text = textField.text, !text.trimmingCharacters(in: .whitespaces).isEmpty {
-            return true
-        }
-        return false
-    }
-    
-    func isValid(textView: UITextView) -> Bool {
-        if let text = textView.text, !text.trimmingCharacters(in: .whitespaces).isEmpty {
-            if text == secretTextPlaceholder {
-                return false
-            }
-            return true
-        }
-        return false
-    }
-    
     func isRestoreParametersValid() -> Bool{
         if !isValid(textField: walletNameTF) {
             walletNameTF.resignFirstResponder()
@@ -165,19 +149,26 @@ class RestoreVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
             return false
         } else if !isValid(textView: secretWordTV) {
             secretWordTV.resignFirstResponder()
-            secretWordTV.showWarning(message: "Please enter space separated secret words")
+            showWarning(message: "Please enter space separated secret words")
             return false
         } else if !isValid(textField: passwordTF) {
             passwordTF.resignFirstResponder()
-            showWarning(message: "Please enter valid password")
+            showWarning(message: "New password field is empty!")
             return false
         } else if !isValid(passwordTF.text!, regEx: Constant.passWordRegEx) {
             passwordTF.resignFirstResponder()
-            showWarning(message: "Please enter valid password")
+            showWarning(message: "A password must contain at least one uppercase letter, one lowercase letter, one number and one special character. A password must be at least 8 character long")
+            return false
+        } else if !isValid(textField: confirmPasswordTF) {
+            confirmPasswordTF.resignFirstResponder()
+            showWarning(message: "Confirm password field is empty!")
+            return false
+        } else if passwordTF.text != confirmPasswordTF.text {
+            showWarning(message: "Password didn't match")
             return false
         } else if !isValid(textField: passPhraseTF) {
             passPhraseTF.resignFirstResponder()
-            showWarning(message: "Please enter a passphrase")
+            showWarning(message: "Your passphrase will be required to recover your wallet in the future")
             return false
         }
         

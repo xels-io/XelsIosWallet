@@ -116,16 +116,17 @@ class LoginVC: UIViewController, UITextFieldDelegate {
                             HUD.flash(.error)
                             return
                         }
-                        //HUD.flash(.label(message), delay: 0.2)
-                        self.showWarning(message: message)
+                        HUD.flash(.label(message), delay: 0.2)
+//                        self.showWarningasButtonResponse(message: message)
+//                        HUD.hide()
                         return
                     }
                     HUD.flash(.error)
                 }
                 break
             case .failure(let error):
-                //HUD.flash(.label(error.localizedDescription), delay: 0.2)
-                self.showWarning(message: error as! String)
+                HUD.flash(.label(error.localizedDescription), delay: 0.2)
+//                self.showWarning(message: error as! String)
                 break
             }
         }
