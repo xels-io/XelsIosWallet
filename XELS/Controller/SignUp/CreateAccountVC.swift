@@ -230,10 +230,12 @@ class CreateAccountVC: UIViewController, UICollectionViewDelegate, UICollectionV
     
     //MARK: - CUSTOM METHODS
     func selectRandomMnemonicIndex() {
+        var count:Int = 0
         randomIndex.removeAll()
         for _ in 1...3 {
-            let randomValue = Int.random(in: 1 ... 12)
-            randomIndex.append(randomValue)
+            let randomValue = Int.random(in: 1 ... 10)
+            randomIndex.append((randomValue % 12) + count)
+            count += 1
         }
         randomIndex.sort()
         if randomIndex.count > 2 {
@@ -307,7 +309,7 @@ class CreateAccountVC: UIViewController, UICollectionViewDelegate, UICollectionV
             return false
         } else if !isValid(textField: passwordTextField) {
             passwordTextField.resignFirstResponder()
-            showWarning(message: "Password field is empty!")
+            showWarning(message: "Password field is empty")
             return false
         } else if !isValid(passwordTextField.text!, regEx: Constant.passWordRegEx) {
             passwordTextField.resignFirstResponder()
@@ -315,7 +317,7 @@ class CreateAccountVC: UIViewController, UICollectionViewDelegate, UICollectionV
             return false
         } else if !isValid(textField: confirmPasswordTextField) {
             confirmPasswordTextField.resignFirstResponder()
-            showWarning(message: "Confirm password field is empty!")
+            showWarning(message: "Confirm password field is empty")
             return false
         } else if passwordTextField.text != confirmPasswordTextField.text {
             showWarning(message: "Password didn't match")

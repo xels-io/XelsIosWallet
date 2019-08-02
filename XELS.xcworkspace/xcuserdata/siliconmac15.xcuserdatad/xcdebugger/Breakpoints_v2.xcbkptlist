@@ -10,12 +10,92 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "XELS/Controller/SignUp/CreateAccountVC.swift"
-            timestampString = "586418670.7281131"
+            timestampString = "586421144.9777091"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "320"
-            endingLineNumber = "320"
+            startingLineNumber = "322"
+            endingLineNumber = "322"
             landmarkName = "isValidCredentials()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "XELS/Controller/SignUp/CreateAccountVC.swift"
+            timestampString = "586421144.977774"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "237"
+            endingLineNumber = "237"
+            landmarkName = "selectRandomMnemonicIndex()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "XELS.CreateAccountVC.selectRandomMnemonicIndex() -&gt; ()"
+                  moduleName = "XELS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/siliconmac15/WorkStation/XelsIosWallet/XELS/Controller/SignUp/CreateAccountVC.swift"
+                  timestampString = "586421163.396811"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "237"
+                  endingLineNumber = "237"
+                  offsetFromSymbolStart = "556">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "XELS.CreateAccountVC.selectRandomMnemonicIndex() -&gt; ()"
+                  moduleName = "XELS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/siliconmac15/WorkStation/XelsIosWallet/XELS/Controller/SignUp/CreateAccountVC.swift"
+                  timestampString = "586421163.398595"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "237"
+                  endingLineNumber = "237"
+                  offsetFromSymbolStart = "584">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "XELS/Controller/SignUp/CreateAccountVC.swift"
+            timestampString = "586421144.9778219"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "236"
+            endingLineNumber = "236"
+            landmarkName = "selectRandomMnemonicIndex()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "XELS/Controller/SignUp/CreateAccountVC.swift"
+            timestampString = "586421144.9778661"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "238"
+            endingLineNumber = "238"
+            landmarkName = "selectRandomMnemonicIndex()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

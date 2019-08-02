@@ -141,11 +141,11 @@ class RestoreVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
     func isRestoreParametersValid() -> Bool{
         if !isValid(textField: walletNameTF) {
             walletNameTF.resignFirstResponder()
-            showWarning(message: "Please enter a wallet name.")
+            showWarning(message: "Please enter a wallet name")
             return false
         } else if !isValid(textField: creationDateTF) {
             creationDateTF.resignFirstResponder()
-            showWarning(message: "Please select a date.")
+            showWarning(message: "Please select a date")
             return false
         } else if !isValid(textView: secretWordTV) {
             secretWordTV.resignFirstResponder()
@@ -153,7 +153,7 @@ class RestoreVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
             return false
         } else if !isValid(textField: passwordTF) {
             passwordTF.resignFirstResponder()
-            showWarning(message: "New password field is empty!")
+            showWarning(message: "New password field is empty")
             return false
         } else if !isValid(passwordTF.text!, regEx: Constant.passWordRegEx) {
             passwordTF.resignFirstResponder()
@@ -161,7 +161,7 @@ class RestoreVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
             return false
         } else if !isValid(textField: confirmPasswordTF) {
             confirmPasswordTF.resignFirstResponder()
-            showWarning(message: "Confirm password field is empty!")
+            showWarning(message: "Confirm password field is empty")
             return false
         } else if passwordTF.text != confirmPasswordTF.text {
             showWarning(message: "Password didn't match")
