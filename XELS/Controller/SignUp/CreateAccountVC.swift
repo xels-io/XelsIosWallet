@@ -243,19 +243,26 @@ class CreateAccountVC: UIViewController, UICollectionViewDelegate, UICollectionV
     
     //MARK: - CUSTOM METHODS
     func selectRandomMnemonicIndex() {
-        var count:Int = 0
-        randomIndex.removeAll()
-        for _ in 1...3 {
-            let randomValue = Int.random(in: 1 ... 10)
-            randomIndex.append((randomValue % 12) + count)
-            count += 1
-        }
-        randomIndex.sort()
-        if randomIndex.count > 2 {
-            self.word5Label.text = "Word number \(randomIndex[0])"
-            self.word8Label.text = "Word number \(randomIndex[1])"
-            self.word12Label.text = "Word number \(randomIndex[2])"
-        }
+//        var count:Int = 0
+//        randomIndex.removeAll()
+//        for _ in 1...3 {
+//            let randomValue = Int.random(in: 1 ... 10)
+//            randomIndex.append((randomValue % 12) + count)
+//            count += 1
+//        }
+//        randomIndex.sort()
+        
+        let randomValue = Array(1...12)
+        let generatedValue = Array(randomValue.shuffled().prefix(3))
+        randomIndex = generatedValue
+        //for i in 0..<generatedValue.count {
+        //    print(generatedValue[i])
+        //}
+       
+        self.word5Label.text = "Word number \(generatedValue[0])"
+        self.word8Label.text = "Word number \(generatedValue[1])"
+        self.word12Label.text = "Word number \(generatedValue[2])"
+        
     }
     
     
