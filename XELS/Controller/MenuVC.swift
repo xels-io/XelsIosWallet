@@ -15,9 +15,9 @@ class MenuVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     let menus = [MenuItem(title: "Dashboard", selectedImage: "dashboard_selected", unselectedImage: "dashboard_unselected"),
                  MenuItem(title: "History", selectedImage: "coin_selected", unselectedImage: "coin_unselected"),
+                 MenuItem(title: "Stacked", selectedImage: "coin_selected", unselectedImage: "coin_unselected"),
                  MenuItem(title: "Receive", selectedImage: "receive_selected", unselectedImage: "receive_unselected"),
                  MenuItem(title: "Send", selectedImage: "send_selected", unselectedImage: "send_unselected"),
-                 MenuItem(title: "", selectedImage: "", unselectedImage: ""),
                  MenuItem(title: "Logout", selectedImage: "logout_selected", unselectedImage: "logout_unselected")]
     
     
@@ -55,15 +55,15 @@ class MenuVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "menuCell", for: indexPath) as! MenuTVCell
         cell.backgroundColor = UIColor.templateGreen
-        if indexPath.row == 4 {
-            cell.menuIcon.isHidden = true
-            cell.menuLabel.isHidden = true
-            cell.selectionStyle = .none
-        } else {
+//        if indexPath.row == 4 {
+//            cell.menuIcon.isHidden = true
+//            cell.menuLabel.isHidden = true
+//            cell.selectionStyle = .none
+//        } else {
             cell.menuIcon.image = UIImage(named: menus[indexPath.row].unselectedImage)
             cell.menuLabel.text = menus[indexPath.row].title
             cell.menuLabel.textColor = UIColor.white
-        }
+        //}
         return cell
     }
     
@@ -87,10 +87,14 @@ class MenuVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             revealViewController!.pushFrontViewController(latestTransactionVC, animated: true)
             break
         case 2:
+        let latestTransactionVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "stockedTransactionNav")
+        revealViewController!.pushFrontViewController(latestTransactionVC, animated: true)
+        break
+        case 3:
             let receiveVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "receiveNav")
             revealViewController!.pushFrontViewController(receiveVC, animated: true)
             break
-        case 3:
+        case 4:
             let sendVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "sendNav")
             revealViewController!.pushFrontViewController(sendVC, animated: true)
             break
@@ -106,7 +110,7 @@ class MenuVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         deselectAllRow(tableView, indexPath)
-        if indexPath.row == 5 || indexPath.row == 4{
+        if indexPath.row == 5{
            return indexPath
         }
         let cell = tableView.cellForRow(at: indexPath) as! MenuTVCell

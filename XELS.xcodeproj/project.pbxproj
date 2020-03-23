@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		053205FF24289C7700321E4E /* StockedTransactionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053205FE24289C7700321E4E /* StockedTransactionVC.swift */; };
 		0583CFFD246D1D4B3503182F /* Pods_XELS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B22D8CF8D12CC6C3713FFF6 /* Pods_XELS.framework */; };
 		05A370D62293DC6300999418 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A370D42293DC6300999418 /* AlertView.swift */; };
 		05A370D72293DC6300999418 /* AlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05A370D52293DC6300999418 /* AlertView.xib */; };
@@ -51,6 +52,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		053205FE24289C7700321E4E /* StockedTransactionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockedTransactionVC.swift; sourceTree = "<group>"; };
 		05A370D42293DC6300999418 /* AlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		05A370D52293DC6300999418 /* AlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlertView.xib; sourceTree = "<group>"; };
 		6B22D8CF8D12CC6C3713FFF6 /* Pods_XELS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_XELS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -118,6 +120,7 @@
 				88C218F121DF16FE0065E049 /* LatestTransactionVC.swift */,
 				05A370D42293DC6300999418 /* AlertView.swift */,
 				05A370D52293DC6300999418 /* AlertView.xib */,
+				053205FE24289C7700321E4E /* StockedTransactionVC.swift */,
 			);
 			path = History;
 			sourceTree = "<group>";
@@ -426,6 +429,7 @@
 				88C218F221DF16FE0065E049 /* LatestTransactionVC.swift in Sources */,
 				88BD94C221D9D63700132E8B /* LoginVC.swift in Sources */,
 				8864469521DF0BE2000BF785 /* HeaderTVCell.swift in Sources */,
+				053205FF24289C7700321E4E /* StockedTransactionVC.swift in Sources */,
 				8818150D21DF6D7B0006EA56 /* TransactionTVCell.swift in Sources */,
 				8863C035225B256200C72AA2 /* QRCodeView.swift in Sources */,
 				884C1F11225358B400525A67 /* AddressesVC.swift in Sources */,
