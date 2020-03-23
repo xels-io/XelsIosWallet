@@ -62,6 +62,23 @@ class CreateAccountVC: UIViewController, UICollectionViewDelegate, UICollectionV
 
         setup()
         setupUI()
+        NotificationCenter.default.addObserver(self, selector: #selector(checkBackgroundStatus),name: NSNotification.Name(rawValue: Constant.appBackgroundStatusNotKey),object: nil)
+        print(currentState)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: Constant.appBackgroundStatusNotKey), object: nil)
+    }
+    
+    
+    @objc func checkBackgroundStatus() {
+        print("Current State:",currentState)
+        if currentState == .mnemonic{
+            slideView()
+        } else if currentState == .confirmWords{
+            slideView()
+            slideView()
+        }
     }
     
     func setup() {
@@ -130,6 +147,7 @@ class CreateAccountVC: UIViewController, UICollectionViewDelegate, UICollectionV
             selectRandomMnemonicIndex()
             slideView()
             currentState = .confirmWords
+            print("Current State:", currentState)
             break
             
         case .confirmWords:
@@ -293,6 +311,7 @@ class CreateAccountVC: UIViewController, UICollectionViewDelegate, UICollectionV
         wordsCollectionView.reloadData()
         slideView()
         currentState = .mnemonic
+        print("Current State:", currentState)
     }
     
     

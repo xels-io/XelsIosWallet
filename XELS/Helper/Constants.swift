@@ -77,5 +77,7 @@ struct Constant{
     
     static let passWordRegEx: String = #"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"#
     static let emaiRegEx: String = "[A-Z0-9a-z.-_]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,3}"
+    
+    static let appBackgroundStatusNotKey = "com.xels.backgrondNotKey"
 }
 
