@@ -130,7 +130,7 @@ class StockedTransactionVC: UIViewController, UITableViewDataSource, UITableView
         
         if let type = transactionData.type {
             if type == "staked" {
-                cell.statusLabel.text = "Reward"
+                cell.statusLabel.text = "Hybrid Reward"
                 cell.statusIV?.image = UIImage(named: "stake_icon")
                 if let address = transactionData.toAddress {
                     cell.addressLabel.text = address

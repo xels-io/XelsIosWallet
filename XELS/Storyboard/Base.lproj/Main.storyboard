@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -194,16 +194,16 @@
                                 <rect key="frame" x="15" y="30" width="345" height="563"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2us-Fd-na3">
-                                        <rect key="frame" x="29" y="278.5" width="287" height="85"/>
+                                        <rect key="frame" x="25" y="278.5" width="295" height="85"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="XBXQRnu6GYCCeJoYmBCfmEUHisRyvNiRQH" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oyP-3K-53D">
-                                                <rect key="frame" x="10" y="12" width="267" height="22"/>
+                                                <rect key="frame" x="10" y="12" width="275" height="22"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="13"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZhA-gn-woM">
-                                                <rect key="frame" x="128.5" y="44" width="30" height="30"/>
+                                                <rect key="frame" x="132.5" y="44" width="30" height="30"/>
                                                 <subviews>
                                                     <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="file" translatesAutoresizingMaskIntoConstraints="NO" id="JTW-6R-DrK">
                                                         <rect key="frame" x="5" y="5" width="20" height="20"/>
@@ -226,7 +226,7 @@
                                                 </connections>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YTq-ti-0Me">
-                                                <rect key="frame" x="73.5" y="42" width="140" height="35"/>
+                                                <rect key="frame" x="77.5" y="42" width="140" height="35"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="140" id="1Cv-zN-Jpl"/>
                                                 </constraints>
@@ -254,7 +254,7 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oxZ-N1-E88">
-                                        <rect key="frame" x="94" y="403.5" width="157" height="36"/>
+                                        <rect key="frame" x="94" y="403.5" width="157" height="33"/>
                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
                                         <state key="normal" title="Show all addresses">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -264,7 +264,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xbr-sY-bPz">
-                                        <rect key="frame" x="107.5" y="464.5" width="130" height="45"/>
+                                        <rect key="frame" x="107.5" y="461.5" width="130" height="45"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="avG-bN-erC"/>
                                             <constraint firstAttribute="width" constant="130" id="dW3-zw-XkU"/>
@@ -586,7 +586,7 @@
                                                                 <attributedString key="attributedText">
                                                                     <fragment content="-">
                                                                         <attributes>
-                                                                            <font key="NSFont" metaFont="controlContent" size="11"/>
+                                                                            <font key="NSFont" metaFont="message" size="11"/>
                                                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                         </attributes>
                                                                     </fragment>
@@ -964,7 +964,7 @@ destination address to calculate the fee.</string>
             </objects>
             <point key="canvasLocation" x="533.60000000000002" y="4742.8785607196405"/>
         </scene>
-        <!--STACKED-->
+        <!--HYBRID REWARD-->
         <scene sceneID="Gyx-Ch-Mbi">
             <objects>
                 <viewController id="KV0-6l-Tll" customClass="StockedTransactionVC" customModule="XELS" customModuleProvider="target" sceneMemberID="viewController">
@@ -990,7 +990,7 @@ destination address to calculate the fee.</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="YzF-OJ-QCh"/>
                     </view>
-                    <navigationItem key="navigationItem" title="STACKED" id="Bcl-db-eqK">
+                    <navigationItem key="navigationItem" title="HYBRID REWARD" id="Bcl-db-eqK">
                         <barButtonItem key="rightBarButtonItem" image="sidebar" id="SDF-8p-S4S">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </barButtonItem>

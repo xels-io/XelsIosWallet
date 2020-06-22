@@ -15,7 +15,7 @@ class MenuVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     let menus = [MenuItem(title: "Dashboard", selectedImage: "dashboard_selected", unselectedImage: "dashboard_unselected"),
                  MenuItem(title: "History", selectedImage: "coin_selected", unselectedImage: "coin_unselected"),
-                 MenuItem(title: "Stacked", selectedImage: "coin_selected", unselectedImage: "coin_unselected"),
+                 MenuItem(title: "Hybrid Reward", selectedImage: "coin_selected", unselectedImage: "coin_unselected"),
                  MenuItem(title: "Receive", selectedImage: "receive_selected", unselectedImage: "receive_unselected"),
                  MenuItem(title: "Send", selectedImage: "send_selected", unselectedImage: "send_unselected"),
                  MenuItem(title: "Logout", selectedImage: "logout_selected", unselectedImage: "logout_unselected")]

@@ -165,7 +165,23 @@ class LatestTransactionVC: UIViewController, UITableViewDataSource, UITableViewD
                 }
                     
             } else if type == "staked" {
-                cell.statusLabel.text = "Reward"
+                cell.statusLabel.text = "Hybrid Reward"
+                cell.statusIV?.image = UIImage(named: "stake_icon")
+                if let address = transactionData.toAddress {
+                    cell.addressLabel.text = address
+                }
+                if let _confirmedBlock = transactionData.confirmedInBlock {
+                    if _confirmedBlock > 0 {
+                        cell.statusIV.image = UIImage(named: "stake_icon")
+                    } else {
+                        cell.statusIV.image = UIImage(named: "stake_icon_yellow")
+                    }
+                } else {
+                    cell.statusIV.image = UIImage(named: "stake_icon_yellow")
+                }
+            }
+            else if type == "mined" {
+                cell.statusLabel.text = "PoW Reward"
                 cell.statusIV?.image = UIImage(named: "stake_icon")
                 if let address = transactionData.toAddress {
                     cell.addressLabel.text = address
