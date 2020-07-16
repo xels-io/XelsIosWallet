@@ -16,6 +16,7 @@ class MenuVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     let menus = [MenuItem(title: "Dashboard", selectedImage: "dashboard_selected", unselectedImage: "dashboard_unselected"),
                  MenuItem(title: "History", selectedImage: "coin_selected", unselectedImage: "coin_unselected"),
                  MenuItem(title: "Hybrid Reward", selectedImage: "coin_selected", unselectedImage: "coin_unselected"),
+                 MenuItem(title: "Pow Reward", selectedImage: "coin_selected", unselectedImage: "coin_unselected"),
                  MenuItem(title: "Receive", selectedImage: "receive_selected", unselectedImage: "receive_unselected"),
                  MenuItem(title: "Send", selectedImage: "send_selected", unselectedImage: "send_unselected"),
                  MenuItem(title: "Logout", selectedImage: "logout_selected", unselectedImage: "logout_unselected")]
@@ -91,14 +92,20 @@ class MenuVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         revealViewController!.pushFrontViewController(latestTransactionVC, animated: true)
         break
         case 3:
+            let latestTransactionVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "stockedTransactionNav")
+            let vc = latestTransactionVC.children.first as! StockedTransactionVC
+            vc.isHybridReward = false
+            revealViewController!.pushFrontViewController(latestTransactionVC, animated: true)
+            break
+        case 4:
             let receiveVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "receiveNav")
             revealViewController!.pushFrontViewController(receiveVC, animated: true)
             break
-        case 4:
+        case 5:
             let sendVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "sendNav")
             revealViewController!.pushFrontViewController(sendVC, animated: true)
             break
-        case 5:
+        case 6:
             tableView.deselectRow(at: indexPath, animated: true)
             let logoutVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "logoutNav")
             revealViewController?.frontViewController.present(logoutVC, animated: true, completion: nil)

@@ -18,6 +18,7 @@ class StockedTransactionVC: UIViewController, UITableViewDataSource, UITableView
     
     let sessionManager = SessionManager.sharedInstance()
     var loggedInUser: User?
+    var isHybridReward = true
     
     
     override func viewDidLoad() {
@@ -46,6 +47,7 @@ class StockedTransactionVC: UIViewController, UITableViewDataSource, UITableView
     
     func setupUI() {
         self.navigationController?.navigationBar.barTintColor = UIColor.templateGreen
+        self.title = self.isHybridReward ? "Hybrid Reward" : "Pow Reward"
     }
     
     
@@ -91,7 +93,14 @@ class StockedTransactionVC: UIViewController, UITableViewDataSource, UITableView
                         return
                     }
                     HUD.flash(.success)
-                    self.transactions = transactions
+                    if !self.isHybridReward{
+                        let filtered = transactions.filter { (model) -> Bool in
+                            return (model.type ?? "").lowercased() == "mined"
+                        }
+                        self.transactions = filtered
+                    }else{
+                        self.transactions = transactions
+                    }
                     self.transactionTableView.reloadData()
                 } else {
                     if let errors = transactionHistoryResponse.errors, let error = errors.first {
@@ -120,6 +129,11 @@ class StockedTransactionVC: UIViewController, UITableViewDataSource, UITableView
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if transactions.count == 0{
+            Helper.emptyMessageInTableView(tableView, isHybridReward ? "You have no hybrid reward" : "You have no pow reward")
+        }else{
+            tableView.backgroundView = nil
+        }
         return transactions.count
     }
     
@@ -129,21 +143,21 @@ class StockedTransactionVC: UIViewController, UITableViewDataSource, UITableView
         let transactionData = transactions[indexPath.row]
         
         if let type = transactionData.type {
-            if type == "staked" {
-                cell.statusLabel.text = "Hybrid Reward"
-                cell.statusIV?.image = UIImage(named: "stake_icon")
-                if let address = transactionData.toAddress {
-                    cell.addressLabel.text = address
-                }
-                if let _confirmedBlock = transactionData.confirmedInBlock {
-                    if _confirmedBlock > 0 {
-                        cell.statusIV.image = UIImage(named: "stake_icon")
-                    } else {
-                        cell.statusIV.image = UIImage(named: "stake_icon_yellow")
-                    }
+            
+            cell.statusLabel.text = type == "staked" ? "Hybrid Reward" : "Pow Reward"
+            cell.statusIV?.image = UIImage(named: "stake_icon")
+
+            if let address = transactionData.toAddress {
+                cell.addressLabel.text = address
+            }
+            if let _confirmedBlock = transactionData.confirmedInBlock {
+                if _confirmedBlock > 0 {
+                    cell.statusIV.image = UIImage(named: "stake_icon")
                 } else {
                     cell.statusIV.image = UIImage(named: "stake_icon_yellow")
                 }
+            } else {
+                cell.statusIV.image = UIImage(named: "stake_icon_yellow")
             }
         }
         if let amount = transactionData.amount {
