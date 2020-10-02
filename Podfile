@@ -7,7 +7,7 @@ target 'XELS' do
 
   # Pods for XELS
 
-    pod 'Alamofire'
+    pod 'Alamofire', '~> 4.5'
     pod 'ObjectMapper', '~> 3.4'
     pod 'AlamofireObjectMapper', '~> 5.0'
     pod 'PKHUD', '~> 5.0'

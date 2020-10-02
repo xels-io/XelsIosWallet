@@ -202,7 +202,7 @@ class CreateAccountVC: UIViewController, UICollectionViewDelegate, UICollectionV
             case .failure(let error):
                 //HUD.flash(.label(error.localizedDescription), delay: 0.2)
                 PKHUD.sharedHUD.hide(afterDelay: 0.2) { success in
-                    self.showWarning(message: error.localizedDescription as! String)
+                    self.showWarning(message: error.localizedDescription)
                 }
                 break
             }
@@ -350,6 +350,10 @@ class CreateAccountVC: UIViewController, UICollectionViewDelegate, UICollectionV
         } else if !isValid(textField: passwordTextField) {
             passwordTextField.resignFirstResponder()
             showWarning(message: "Password field is empty")
+            return false
+        }else if passwordTextField.text!.count < 8 {
+            passwordTextField.resignFirstResponder()
+            showWarning(message: "A password must contain at least one uppercase letter, one lowercase letter, one number and one special character. A password must be at least 8 character long")
             return false
         } else if !isValid(passwordTextField.text!, regEx: Constant.passWordRegEx) {
             passwordTextField.resignFirstResponder()
