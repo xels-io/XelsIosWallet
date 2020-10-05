@@ -49,6 +49,7 @@
 		88C218F221DF16FE0065E049 /* LatestTransactionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C218F121DF16FE0065E049 /* LatestTransactionVC.swift */; };
 		88DC3A7C21FEA122009CD491 /* Signup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88DC3A7B21FEA122009CD491 /* Signup.storyboard */; };
 		88DC3A8021FEAF0D009CD491 /* RestoreVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DC3A7F21FEAF0D009CD491 /* RestoreVC.swift */; };
+		A915E625252AFB0600171FC9 /* CreateAccount2ndStepVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A915E624252AFB0600171FC9 /* CreateAccount2ndStepVC.swift */; };
 		F8BFFEDD24C026BF007FD6A8 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8BFFEDC24C026BF007FD6A8 /* Helper.swift */; };
 /* End PBXBuildFile section */
 
@@ -100,6 +101,7 @@
 		88DC3A7B21FEA122009CD491 /* Signup.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Signup.storyboard; sourceTree = "<group>"; };
 		88DC3A7F21FEAF0D009CD491 /* RestoreVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestoreVC.swift; sourceTree = "<group>"; };
 		A2BD910D14EAC75BE6E64B30 /* Pods-XELS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XELS.release.xcconfig"; path = "Pods/Target Support Files/Pods-XELS/Pods-XELS.release.xcconfig"; sourceTree = "<group>"; };
+		A915E624252AFB0600171FC9 /* CreateAccount2ndStepVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccount2ndStepVC.swift; sourceTree = "<group>"; };
 		CA6C1F48F7194CA812407DE5 /* Pods-XELS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XELS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-XELS/Pods-XELS.debug.xcconfig"; sourceTree = "<group>"; };
 		F8BFFEDC24C026BF007FD6A8 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -159,6 +161,7 @@
 				88DC3A7F21FEAF0D009CD491 /* RestoreVC.swift */,
 				88BD94C121D9D63700132E8B /* LoginVC.swift */,
 				8817674A225F33420006331B /* AppSettingsVC.swift */,
+				A915E624252AFB0600171FC9 /* CreateAccount2ndStepVC.swift */,
 			);
 			path = SignUp;
 			sourceTree = "<group>";
@@ -433,6 +436,7 @@
 				88BD94C221D9D63700132E8B /* LoginVC.swift in Sources */,
 				8864469521DF0BE2000BF785 /* HeaderTVCell.swift in Sources */,
 				053205FF24289C7700321E4E /* StockedTransactionVC.swift in Sources */,
+				A915E625252AFB0600171FC9 /* CreateAccount2ndStepVC.swift in Sources */,
 				8818150D21DF6D7B0006EA56 /* TransactionTVCell.swift in Sources */,
 				8863C035225B256200C72AA2 /* QRCodeView.swift in Sources */,
 				884C1F11225358B400525A67 /* AddressesVC.swift in Sources */,
