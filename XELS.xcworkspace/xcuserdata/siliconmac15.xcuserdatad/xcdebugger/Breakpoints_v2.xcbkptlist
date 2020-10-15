@@ -92,22 +92,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "A5D631E6-DE7B-4E1F-B8BD-1FF22E0C75FA"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "XELS/Controller/SignUp/CreateAccountVC.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "214"
-            endingLineNumber = "214"
-            landmarkName = "createAccountWith(mnemonic:name:password:passphrase:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "45732E83-5A26-423E-9394-A7184EACB320"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -249,14 +233,14 @@
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "3E0FFEF5-A4E3-4B52-A766-1E630E49B396 - af934c148138d4f6"
+                  uuid = "3E0FFEF5-A4E3-4B52-A766-1E630E49B396 - 5c2ab8186e67231a"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "XELS.LatestTransactionVC.getTransactions() -&gt; ()"
                   moduleName = "XELS"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/siliconmac15/WorkStation/XelsIosWallet/XELS/Controller/History/LatestTransactionVC.swift"
+                  urlString = "file:///Users/siliconmac15/Downloads/projects/Xels/XELS/Controller/History/LatestTransactionVC.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "81"
@@ -264,14 +248,14 @@
                   offsetFromSymbolStart = "1100">
                </Location>
                <Location
-                  uuid = "3E0FFEF5-A4E3-4B52-A766-1E630E49B396 - d5c89f58efa4342f"
+                  uuid = "3E0FFEF5-A4E3-4B52-A766-1E630E49B396 - 26716b5400fbc3c3"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "closure #1 (Alamofire.Result&lt;XELS.LatestTransactionResponse&gt;, Swift.Optional&lt;Swift.Int&gt;, Swift.Optional&lt;Foundation.Data&gt;) -&gt; () in XELS.LatestTransactionVC.getTransactions() -&gt; ()"
                   moduleName = "XELS"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/siliconmac15/WorkStation/XelsIosWallet/XELS/Controller/History/LatestTransactionVC.swift"
+                  urlString = "file:///Users/siliconmac15/Downloads/projects/Xels/XELS/Controller/History/LatestTransactionVC.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "83"

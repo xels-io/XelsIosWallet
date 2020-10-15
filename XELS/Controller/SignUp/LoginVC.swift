@@ -11,6 +11,7 @@ import PKHUD
 import Alamofire
 import AlamofireObjectMapper
 
+@available(iOS 11.0, *)
 class LoginVC: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var createRestoreContentView: UIView!
@@ -77,8 +78,8 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         if noBaseUrl() {
             return
         }
-        let restoreVC = UIStoryboard(name: "Signup", bundle: nil).instantiateViewController(withIdentifier: "createVC")
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        let restoreVC = UIStoryboard(name: "Signup", bundle: nil).instantiateViewController(withIdentifier: "createVC") as! CreateAccountVC
+//        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: restoreVC, action: #selector(restoreVC.backButtonPressed))
         self.navigationItem.backBarButtonItem?.tintColor = UIColor.white
         self.navigationController?.pushViewController(restoreVC, animated: true)
     }

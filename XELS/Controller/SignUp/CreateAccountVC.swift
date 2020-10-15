@@ -46,6 +46,8 @@ class CreateAccountVC: UIViewController, UICollectionViewDelegate, UICollectionV
             self.navigationItem.title = currentState.rawValue
             if currentState == .confirmWords {
                 createNewWalletButton.setTitle("Confirm", for: .normal)
+            }else{
+                createNewWalletButton.setTitle("Create a new wallet", for: .normal)
             }
         }
     }
@@ -68,6 +70,22 @@ class CreateAccountVC: UIViewController, UICollectionViewDelegate, UICollectionV
     
     override func viewWillDisappear(_ animated: Bool) {
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: Constant.appBackgroundStatusNotKey), object: nil)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationSetupment()
+    }
+    
+    func navigationSetupment() {
+        let image = UIImage(named: "arrow_back")
+        let backButton = UIButton(type: .custom)
+        backButton.addTarget(self, action: #selector(backButtonPressed), for: .touchUpInside)
+        backButton.setImage(image, for: .normal)
+        backButton.tintColor = UIColor.white
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButton)
+        
+        
+        self.navigationItem.leftBarButtonItem?.tintColor = UIColor.white
     }
     
     
@@ -138,6 +156,7 @@ class CreateAccountVC: UIViewController, UICollectionViewDelegate, UICollectionV
     
     //MARK: - BUTTON ACTIONS
     @IBAction func createNewWalletButtonTapped(_ sender: Any) {
+        
         switch currentState {
         case .crateAWallet:
             goToMnemonicPage()
@@ -209,6 +228,31 @@ class CreateAccountVC: UIViewController, UICollectionViewDelegate, UICollectionV
         }
     }
     
+    @objc  func backButtonPressed() {
+        self.backButtonLogicSetupment()
+    }
+    
+    func backButtonLogicSetupment() {
+        switch currentState {
+        case .crateAWallet:
+            self.goToLoginPage()
+            break
+            
+        case .mnemonic:
+            self.reverseSlideView()
+            currentState = .crateAWallet
+            break
+            
+        case .confirmWords:
+            self.reverseSlideView()
+            currentState = .mnemonic
+            break
+        }
+    }
+    
+    func goToLoginPage() {
+        self.navigationController?.popViewController(animated: true)
+    }
     
     
     func createAccountWith(mnemonic: String, name: String, password: String, passphrase: String) {
@@ -391,6 +435,12 @@ class CreateAccountVC: UIViewController, UICollectionViewDelegate, UICollectionV
     func slideView() {
         UIView.animate(withDuration: 0.5) {
             self.inputSliderView.frame.origin.x -= self.view.frame.width
+        }
+    }
+    
+    func reverseSlideView() {
+        UIView.animate(withDuration: 0.5) {
+            self.inputSliderView.frame.origin.x += self.view.frame.width
         }
     }
     
