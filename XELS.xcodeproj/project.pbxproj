@@ -49,7 +49,6 @@
 		88C218F221DF16FE0065E049 /* LatestTransactionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C218F121DF16FE0065E049 /* LatestTransactionVC.swift */; };
 		88DC3A7C21FEA122009CD491 /* Signup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88DC3A7B21FEA122009CD491 /* Signup.storyboard */; };
 		88DC3A8021FEAF0D009CD491 /* RestoreVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88DC3A7F21FEAF0D009CD491 /* RestoreVC.swift */; };
-		A915E625252AFB0600171FC9 /* CreateAccount2ndStepVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A915E624252AFB0600171FC9 /* CreateAccount2ndStepVC.swift */; };
 		F8BFFEDD24C026BF007FD6A8 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8BFFEDC24C026BF007FD6A8 /* Helper.swift */; };
 /* End PBXBuildFile section */
 
@@ -436,7 +435,6 @@
 				88BD94C221D9D63700132E8B /* LoginVC.swift in Sources */,
 				8864469521DF0BE2000BF785 /* HeaderTVCell.swift in Sources */,
 				053205FF24289C7700321E4E /* StockedTransactionVC.swift in Sources */,
-				A915E625252AFB0600171FC9 /* CreateAccount2ndStepVC.swift in Sources */,
 				8818150D21DF6D7B0006EA56 /* TransactionTVCell.swift in Sources */,
 				8863C035225B256200C72AA2 /* QRCodeView.swift in Sources */,
 				884C1F11225358B400525A67 /* AddressesVC.swift in Sources */,
@@ -600,9 +598,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 17;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 18;
 				DEVELOPMENT_TEAM = 83J9YVKHNK;
 				INFOPLIST_FILE = XELS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -612,7 +610,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.xels.wallet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = xelsDevProvProfile;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "XELS/Helper/XELS-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
@@ -628,7 +626,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 17;
+				CURRENT_PROJECT_VERSION = 18;
 				DEVELOPMENT_TEAM = 83J9YVKHNK;
 				INFOPLIST_FILE = XELS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
